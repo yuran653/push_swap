@@ -6,7 +6,7 @@
 /*   By: jgoldste <jgoldste@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 01:19:29 by jgoldste          #+#    #+#             */
-/*   Updated: 2022/02/04 01:54:59 by jgoldste         ###   ########.fr       */
+/*   Updated: 2022/02/04 04:04:56 by jgoldste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,9 @@ void		get_digit(char *arg, t_stacks *stacks);
 t_stacks	*init_stacks(void);
 t_elem		*init_element(int number);
 void		init_stack_a(t_stacks *stacks, t_elem *elem);
+void		check_duplicate(t_stacks *stacks);
 void		error_args(void);
 void		error_digit(void);
+void		error_duplicate(void);
 
 #endif
