@@ -6,11 +6,12 @@
 /*   By: jgoldste <jgoldste@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 00:43:47 by jgoldste          #+#    #+#             */
-/*   Updated: 2022/02/04 01:54:59 by jgoldste         ###   ########.fr       */
+/*   Updated: 2022/02/04 12:58:26 by jgoldste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdio.h>
 
 void	init_stack_a(t_stacks *stacks, t_elem *element)
 {
@@ -45,7 +46,7 @@ t_elem	*init_element(int number)
 	element = (t_elem *)malloc(sizeof(t_elem));
 	if (!element)
 		return (NULL);
-	element->digit = number;
+	element->number = number;
 	element->next = NULL;
 	element->prev = NULL;
 	return (element);
@@ -56,6 +57,8 @@ t_stacks	*init_stacks(void)
 	t_stacks	*stacks;
 
 	stacks = (t_stacks *)malloc(sizeof(t_stacks));
+	if (!stacks)
+		return (NULL);
 	stacks->head_a = NULL;
 	stacks->head_b = NULL;
 	stacks->size_a = 0;

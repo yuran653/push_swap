@@ -6,7 +6,7 @@
 /*   By: jgoldste <jgoldste@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 01:21:16 by jgoldste          #+#    #+#             */
-/*   Updated: 2022/02/04 03:56:07 by jgoldste         ###   ########.fr       */
+/*   Updated: 2022/02/04 12:58:04 by jgoldste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,15 @@ int	main(int argc, char **argv)
 	int			stop;
 
 	stacks = init_stacks();
+	if (!stacks)
+		error_init();
 	validation(argc, argv, stacks);
 	stop = stacks->size_a;
 	while (stop--)
 	{
-		printf("\t[%d]\n", stacks->head_a->digit);
+		printf("\t[%d]\n", stacks->head_a->number);
 		stacks->head_a = stacks->head_a->next;
 	}
+	free_stacks(stacks);
 	return (0);
 }

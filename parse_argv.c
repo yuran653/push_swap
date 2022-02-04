@@ -6,7 +6,7 @@
 /*   By: jgoldste <jgoldste@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 03:09:44 by jgoldste          #+#    #+#             */
-/*   Updated: 2022/02/04 04:08:16 by jgoldste         ###   ########.fr       */
+/*   Updated: 2022/02/04 13:07:38 by jgoldste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@ void	check_duplicate(t_stacks *stacks)
 	stop1 = stacks->size_a;
 	while (stop1 > 0)
 	{
-		compare = stacks->head_a->digit;
+		compare = stacks->head_a->number;
 		stop2 = stacks->size_a - 1;
 		while (stop2 > 0)
 		{
-			if (compare == stacks->head_a->next->digit)
-				error_duplicate();
+			if (compare == stacks->head_a->next->number)
+				error_duplicate(stacks);
 			stacks->head_a = stacks->head_a->next;
 			stop2--;
 		}
@@ -38,15 +38,21 @@ void	check_duplicate(t_stacks *stacks)
 
 void	get_digit(char *arg, t_stacks *stacks)
 {
-	int	i;
-	int	digit;
+	int		i;
+	int		number;
+	t_elem	*elem;
 
 	i = -1;
 	while (arg[++i])
 		if (ft_isalpha(arg[i]) == 1)
 			error_digit();
-	digit = ft_atoi(arg);
-	init_stack_a(stacks, init_element(digit));
+	number = ft_atoi(arg);
+	elem = init_element(number);
+	// free(elem);
+	// elem = NULL;
+	if (!elem)
+		error_malloc(stacks);
+	init_stack_a(stacks, elem);
 }
 
 void	validation(int argc, char **argv, t_stacks *stacks)
@@ -60,8 +66,11 @@ void	validation(int argc, char **argv, t_stacks *stacks)
 	{
 		i = -1;
 		args_char = ft_split(argv[1], ' ');
+		if (!args_char)
+			error_malloc(stacks);
 		while (args_char[++i])
 			get_digit(args_char[i], stacks);
+		free_array(args_char);
 	}
 	else
 	{

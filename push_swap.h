@@ -6,7 +6,7 @@
 /*   By: jgoldste <jgoldste@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 01:19:29 by jgoldste          #+#    #+#             */
-/*   Updated: 2022/02/04 04:04:56 by jgoldste         ###   ########.fr       */
+/*   Updated: 2022/02/04 12:44:30 by jgoldste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 
 # include "./libft/libft.h"
 
-typedef struct s_element
+typedef struct s_elem
 {
-	int					digit;
-	struct s_element	*next;
-	struct s_element	*prev;
+	int				number;
+	struct s_elem	*next;
+	struct s_elem	*prev;
 }	t_elem;
 
 typedef struct s_stacks
@@ -38,6 +38,10 @@ void		init_stack_a(t_stacks *stacks, t_elem *elem);
 void		check_duplicate(t_stacks *stacks);
 void		error_args(void);
 void		error_digit(void);
-void		error_duplicate(void);
+void		error_duplicate(t_stacks *stacks);
+void		error_malloc(t_stacks *stacks);
+void		error_init(void);
+void		free_array(char **array);
+void		free_stacks(t_stacks *stacks);
 
 #endif
