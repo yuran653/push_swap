@@ -6,18 +6,18 @@
 /*   By: jgoldste <jgoldste@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 04:33:34 by jgoldste          #+#    #+#             */
-/*   Updated: 2022/02/04 02:03:32 by jgoldste         ###   ########.fr       */
+/*   Updated: 2022/02/04 13:08:38 by jgoldste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdio.h>
 
-typedef struct s_element
+typedef struct s_elem
 {
-	int					digit;
-	struct s_element	*next;
-	struct s_element	*prev;
+	int					number;
+	struct s_elem	*next;
+	struct s_elem	*prev;
 }	t_elem;
 
 typedef struct s_stacks
@@ -35,7 +35,7 @@ t_elem	*init_element(int number)
 	element = (t_elem *)malloc(sizeof(t_elem));
 	if (!element)
 		return (NULL);
-	element->digit = number;
+	element->number = number;
 	element->next = NULL;
 	element->prev = NULL;
 	return (element);
@@ -89,7 +89,7 @@ int	main(void)
 	i = -1;
 	while (++i < 10)
 	{
-		printf("\t[%d]\n", stacks.head_a->digit);
+		printf("\t[%d]\n", stacks.head_a->number);
 		stacks.head_a = stacks.head_a->next;
 	}
 	return (0);
