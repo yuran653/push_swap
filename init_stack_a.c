@@ -6,12 +6,11 @@
 /*   By: jgoldste <jgoldste@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 00:43:47 by jgoldste          #+#    #+#             */
-/*   Updated: 2022/02/04 12:58:26 by jgoldste         ###   ########.fr       */
+/*   Updated: 2022/02/19 05:40:39 by jgoldste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
 void	init_stack_a(t_stacks *stacks, t_elem *element)
 {

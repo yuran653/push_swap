@@ -6,12 +6,11 @@
 /*   By: jgoldste <jgoldste@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 03:09:44 by jgoldste          #+#    #+#             */
-/*   Updated: 2022/02/04 13:07:38 by jgoldste         ###   ########.fr       */
+/*   Updated: 2022/02/19 05:41:24 by jgoldste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
 void	check_duplicate(t_stacks *stacks)
 {
@@ -48,8 +47,6 @@ void	get_digit(char *arg, t_stacks *stacks)
 			error_digit();
 	number = ft_atoi(arg);
 	elem = init_element(number);
-	// free(elem);
-	// elem = NULL;
 	if (!elem)
 		error_malloc(stacks);
 	init_stack_a(stacks, elem);
