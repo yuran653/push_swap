@@ -6,7 +6,7 @@
 /*   By: jgoldste <jgoldste@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 00:43:47 by jgoldste          #+#    #+#             */
-/*   Updated: 2022/02/20 06:29:29 by jgoldste         ###   ########.fr       */
+/*   Updated: 2022/02/20 18:11:24 by jgoldste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,5 @@ t_stack	*init_stack(void)
 		return (NULL);
 	stack->head = NULL;
 	stack->size = 0;
-	printf("---STACK---\n");
 	return (stack);
 }

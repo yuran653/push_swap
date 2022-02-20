@@ -6,13 +6,13 @@
 #    By: jgoldste <jgoldste@student.21-school.ru    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/02 01:09:45 by jgoldste          #+#    #+#              #
-#    Updated: 2022/02/20 06:13:23 by jgoldste         ###   ########.fr        #
+#    Updated: 2022/02/20 21:44:53 by jgoldste         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	push_swap
 
-SRCS		=	push_swap.c		parse_argv.c		init_stack.c  	utils.c\
+SRCS		=	push_swap.c		parse_argv.c		init_stack.c\
 				free_func.c		error.c
 
 SRCS_B		=	push_swap_bonus.c

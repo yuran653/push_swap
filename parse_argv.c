@@ -6,7 +6,7 @@
 /*   By: jgoldste <jgoldste@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 03:09:44 by jgoldste          #+#    #+#             */
-/*   Updated: 2022/02/20 06:29:55 by jgoldste         ###   ########.fr       */
+/*   Updated: 2022/02/20 21:57:34 by jgoldste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,92 +19,94 @@ void	check_duplicate(t_stack *stack_a)
 	int	compare;
 
 	stop1 = stack_a->size;
-	while (stop1 > 0)
+	if (stop1 > 1)
 	{
-		compare = stack_a->head->number;
-		stop2 = stack_a->size - 1;
-		while (stop2 > 0)
+		while (stop1 > 0)
 		{
-			if (compare == stack_a->head->next->number)
-				error_malloc(stack_a);
-			stack_a->head = stack_a->head->next;
-			stop2--;
+			compare = stack_a->head->number;
+			stop2 = stack_a->size - 1;
+			while (stop2 > 0)
+			{
+				if (compare == stack_a->head->next->number)
+					error_malloc(stack_a);
+				stack_a->head = stack_a->head->next;
+				stop2--;
+			}
+			stack_a->head = stack_a->head->next->next;
+			stop1--;
 		}
-		stack_a->head = stack_a->head->next->next;
-		stop1--;
 	}
 }
 
-void	check_digit(char **argv, t_stack *stack_a, int free)
+int	check_digit(char *arg)
 {
 	int	i;
-	int	j;
 
 	i = -1;
-	if (!free)
-		i++;
-	j = -1;
-	while (argv[++i])
-	{
-		while (argv[i][++j])
-			if (ft_isalpha(argv[i][j]) == 1)
-			{
-				if (free)
-					free_array(argv);
-				error_malloc(stack_a);
-			}
-	}
+	while (arg[++i])
+		if (!ft_isdigit(arg[i]))
+			return (1);
+	return (0);
 }
 
-unsigned int	get_digit(char **argv, t_stack *stack_a, int free)
+// void	check_int(int number, t_stack *stack_a, int free_arr)
+// {
+
+// }
+
+t_stack	*get_stack(int argc, char **argv)
 {
-	int		size;
+	int		i;
 	int		number;
 	t_elem	*elem;
+	t_stack	*stack_a;
 
-	size = -1;
-	if (!free)
-		size++;
-	while (argv[++size])
+	i = -1;
+	if (argc != 2)
+		i++;
+	stack_a = init_stack();
+	if (!stack_a)
+		error();
+	while (argv[++i])
 	{
-		check_digit(argv, stack_a, free);
-		number = ft_atoi(argv[size]);
+		number = ft_atoi(argv[i]);
+		// check_int(number, stack_a, free_arr);
 		elem = init_element(number);
 		if (!elem)
 			error_malloc(stack_a);
 		append_stack(stack_a, elem);
 	}
-	if (!free)
-		size--;
-	return ((unsigned int)size);
+	if (argc != 2)
+		i--;
+	stack_a->size = i;
+	free_argv(argc, argv);
+	return (stack_a);
 }
 
 t_stack	*validation(int argc, char **argv)
 {
-	char	**args_char;
+	int		i;
 	t_stack	*stack_a;
 
+	i = 0;
 	if (argc == 1)
 		exit(EXIT_SUCCESS);
-	stack_a = init_stack();
-	// if (!stack_a)
-	// 	error();
-	printf("\t\targc = %d\n---CHECK0---\n", argc);
 	if (argc == 2)
 	{
-		printf("---CHECK1---\n");
-		args_char = ft_split(argv[1], ' ');
-		if (!args_char)
-			error_malloc(stack_a);
-		stack_a->size = get_digit(args_char, stack_a, 1);
-		free_array(args_char);
+		argv = ft_split(argv[1], ' ');
+		if (!argv)
+			error();
+		i--;
 	}
-	else
+	while (argv[++i])
 	{
-		printf("---CHECK2---");
-		// stack_a->size = get_digit(argv, stack_a, 0);
+		if (check_digit(argv[i]))
+		{
+			free_argv(argc, argv);
+			error();
+		}
 	}
-	printf("---CHECK3---\n");
+	stack_a = get_stack(argc, argv);
 	check_duplicate(stack_a);
 	return (stack_a);
 }

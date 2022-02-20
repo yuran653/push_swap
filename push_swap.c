@@ -6,7 +6,7 @@
 /*   By: jgoldste <jgoldste@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 01:21:16 by jgoldste          #+#    #+#             */
-/*   Updated: 2022/02/20 06:20:55 by jgoldste         ###   ########.fr       */
+/*   Updated: 2022/02/20 21:47:54 by jgoldste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,14 @@ static void	print_stack(t_stack *stack)
 {
 	unsigned int	stop;
 	
-	printf("\t------STACK------\n");
 	stop = stack->size;
 	if (stop)
 	{
 		while (stop--)
 		{
 			printf("\t\t[%d]\n", stack->head->number);
-			stack->head = stack->head->next;
+			if (stack->size > 1)
+				stack->head = stack->head->next;
 		}
 	if (stack->size)
 			printf("\n\tHEAD\t[%d]\n", stack->head->number);
