@@ -1,41 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_stack_a.c                                     :+:      :+:    :+:   */
+/*   init_stack.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgoldste <jgoldste@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 00:43:47 by jgoldste          #+#    #+#             */
-/*   Updated: 2022/02/19 05:40:39 by jgoldste         ###   ########.fr       */
+/*   Updated: 2022/02/20 06:29:29 by jgoldste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	init_stack_a(t_stacks *stacks, t_elem *element)
+void	append_stack(t_stack *stack, t_elem *elem)
 {
 	t_elem	*tmp;
 
-	tmp = stacks->head_a;
+	tmp = stack->head;
 	if (tmp)
 	{
 		if (tmp->prev)
 		{
-			element->next = tmp;
-			element->prev = tmp->prev;
-			tmp->prev->next = element;
-			tmp->prev = element;
+			elem->next = tmp;
+			elem->prev = tmp->prev;
+			tmp->prev->next = elem;
+			tmp->prev = elem;
 		}
 		else
 		{
-			element->next = tmp;
-			element->prev = tmp;
-			tmp->next = element;
-			tmp->prev = element;
+			elem->next = tmp;
+			elem->prev = tmp;
+			tmp->next = elem;
+			tmp->prev = elem;
 		}
 	}
 	else
-		stacks->head_a = element;
+		stack->head = elem;
 }
 
 t_elem	*init_element(int number)
@@ -51,16 +51,15 @@ t_elem	*init_element(int number)
 	return (element);
 }
 
-t_stacks	*init_stacks(void)
+t_stack	*init_stack(void)
 {
-	t_stacks	*stacks;
+	t_stack	*stack;
 
-	stacks = (t_stacks *)malloc(sizeof(t_stacks));
-	if (!stacks)
+	stack = (t_stack *)malloc(sizeof(t_stack));
+	if (!stack)
 		return (NULL);
-	stacks->head_a = NULL;
-	stacks->head_b = NULL;
-	stacks->size_a = 0;
-	stacks->size_b = 0;
-	return (stacks);
+	stack->head = NULL;
+	stack->size = 0;
+	printf("---STACK---\n");
+	return (stack);
 }

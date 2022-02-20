@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_func.c                                        :+:      :+:    :+:   */
+/*   free_func_bak.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgoldste <jgoldste@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 11:22:18 by jgoldste          #+#    #+#             */
-/*   Updated: 2022/02/20 06:17:42 by jgoldste         ###   ########.fr       */
+/*   Updated: 2022/02/20 05:56:14 by jgoldste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,27 @@ void	free_array(char **array)
 	free(array);
 }
 
-void	free_stack(t_stack *stack)
+void	free_stacks(t_stacks *stacks)
 {
 	t_elem			*tmp;
-	
-	stack->head->prev->next = NULL;
-	while (stack->head)
+	unsigned int	size_a;
+	unsigned int	size_b;
+
+	size_a = stacks->size_a;
+	size_b = stacks->size_b;
+	while (size_a--)
 	{
-		tmp = stack->head->next;
-		free(stack->head);
-		stack->head = tmp;
+		tmp = stacks->head_a->next;
+		free(stacks->head_a);
+		if (tmp)
+			stacks->head_a = tmp;
 	}
-	free(stack);
+	while (size_b--)
+	{
+		tmp = stacks->head_b->next;
+		free(stacks->head_b);
+		if (tmp)
+			stacks->head_b = tmp;
+	}
+	free(stacks);
 }
