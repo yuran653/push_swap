@@ -6,7 +6,7 @@
 /*   By: jgoldste <jgoldste@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 01:19:29 by jgoldste          #+#    #+#             */
-/*   Updated: 2022/02/20 21:35:06 by jgoldste         ###   ########.fr       */
+/*   Updated: 2022/02/21 22:02:05 by jgoldste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ typedef struct s_stack
 t_stack	*validation(int argc, char **argv);
 t_stack	*get_stack(int argc, char **argv);
 int		check_digit(char *arg);
+t_elem	*get_number(char **argv);
+int		atoi_ps(char *arg, unsigned long long int *number);
 void	check_duplicate(t_stack *stack_a);
 t_stack	*init_stack(void);
 t_elem	*init_element(int number);

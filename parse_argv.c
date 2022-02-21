@@ -6,7 +6,7 @@
 /*   By: jgoldste <jgoldste@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 03:09:44 by jgoldste          #+#    #+#             */
-/*   Updated: 2022/02/20 21:57:34 by jgoldste         ###   ########.fr       */
+/*   Updated: 2022/02/21 22:02:28 by jgoldste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,26 +38,9 @@ void	check_duplicate(t_stack *stack_a)
 	}
 }
 
-int	check_digit(char *arg)
-{
-	int	i;
-
-	i = -1;
-	while (arg[++i])
-		if (!ft_isdigit(arg[i]))
-			return (1);
-	return (0);
-}
-
-// void	check_int(int number, t_stack *stack_a, int free_arr)
-// {
-
-// }
-
 t_stack	*get_stack(int argc, char **argv)
 {
 	int		i;
-	int		number;
 	t_elem	*elem;
 	t_stack	*stack_a;
 
@@ -69,18 +52,30 @@ t_stack	*get_stack(int argc, char **argv)
 		error();
 	while (argv[++i])
 	{
-		number = ft_atoi(argv[i]);
-		// check_int(number, stack_a, free_arr);
-		elem = init_element(number);
+		elem = get_number(argv);
 		if (!elem)
+		{
+			free_argv(argc, argv);
 			error_malloc(stack_a);
+		}
 		append_stack(stack_a, elem);
 	}
 	if (argc != 2)
 		i--;
 	stack_a->size = i;
-	free_argv(argc, argv);
 	return (stack_a);
+}
+
+int	check_digit(char *arg)
+{
+	int	i;
+
+	i = -1;
+	while (arg[++i])
+		if (!ft_isdigit(arg[i]))
+			if ((arg[i] != '-' && arg[i] != '+') || i != 0)
+				return (1);
+	return (0);
 }
 
 t_stack	*validation(int argc, char **argv)
@@ -89,8 +84,6 @@ t_stack	*validation(int argc, char **argv)
 	t_stack	*stack_a;
 
 	i = 0;
-	if (argc == 1)
-		exit(EXIT_SUCCESS);
 	if (argc == 2)
 	{
 		argv = ft_split(argv[1], ' ');
@@ -107,6 +100,7 @@ t_stack	*validation(int argc, char **argv)
 		}
 	}
 	stack_a = get_stack(argc, argv);
+	free_argv(argc, argv);
 	check_duplicate(stack_a);
 	return (stack_a);
 }
