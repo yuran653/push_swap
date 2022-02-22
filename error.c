@@ -6,7 +6,7 @@
 /*   By: jgoldste <jgoldste@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 03:15:30 by jgoldste          #+#    #+#             */
-/*   Updated: 2022/02/20 06:15:21 by jgoldste         ###   ########.fr       */
+/*   Updated: 2022/02/22 01:47:01 by jgoldste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,24 @@ void	error(void)
 	exit(EXIT_FAILURE);
 }
 
-void	error_malloc(t_stack *stack)
+void	error_free_argv(int argc, char **argv)
 {
 	ft_putstr_fd("Error\n", STDERR_FILENO);
+	free_argv(argc, argv);
+	exit(EXIT_FAILURE);
+}
+
+void	error_free_stack(t_stack *stack)
+{
+	ft_putstr_fd("Error\n", STDERR_FILENO);
+	free_stack(stack);
+	exit(EXIT_FAILURE);
+}
+
+void	error_free_all(int argc, char **argv, t_stack *stack)
+{
+	ft_putstr_fd("Error\n", STDERR_FILENO);
+	free_argv(argc, argv);
 	free_stack(stack);
 	exit(EXIT_FAILURE);
 }

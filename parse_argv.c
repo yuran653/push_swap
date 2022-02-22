@@ -6,7 +6,7 @@
 /*   By: jgoldste <jgoldste@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 03:09:44 by jgoldste          #+#    #+#             */
-/*   Updated: 2022/02/21 22:02:28 by jgoldste         ###   ########.fr       */
+/*   Updated: 2022/02/22 06:52:30 by jgoldste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	check_duplicate(t_stack *stack_a)
 			while (stop2 > 0)
 			{
 				if (compare == stack_a->head->next->number)
-					error_malloc(stack_a);
+					error_free_stack(stack_a);
 				stack_a->head = stack_a->head->next;
 				stop2--;
 			}
@@ -44,25 +44,22 @@ t_stack	*get_stack(int argc, char **argv)
 	t_elem	*elem;
 	t_stack	*stack_a;
 
-	i = -1;
-	if (argc != 2)
-		i++;
-	stack_a = init_stack();
+	i = 0;
+	if (argc == 2)
+		i--;
+	stack_a = init_stack('a');
 	if (!stack_a)
-		error();
+		error_free_argv(argc, argv);
 	while (argv[++i])
 	{
-		elem = get_number(argv);
+		elem = get_number(argv[i]);
 		if (!elem)
-		{
-			free_argv(argc, argv);
-			error_malloc(stack_a);
-		}
+			error_free_all(argc, argv, stack_a);
 		append_stack(stack_a, elem);
+		stack_a->size = i;
+		if (argc == 2)
+			stack_a->size = stack_a->size + 1;
 	}
-	if (argc != 2)
-		i--;
-	stack_a->size = i;
 	return (stack_a);
 }
 
@@ -73,8 +70,12 @@ int	check_digit(char *arg)
 	i = -1;
 	while (arg[++i])
 		if (!ft_isdigit(arg[i]))
+		{
 			if ((arg[i] != '-' && arg[i] != '+') || i != 0)
 				return (1);
+			if ((arg[0] == '-' || arg[0] == '+') && ft_strlen(arg) == 1)
+				return (1);
+		}
 	return (0);
 }
 
@@ -92,13 +93,8 @@ t_stack	*validation(int argc, char **argv)
 		i--;
 	}
 	while (argv[++i])
-	{
 		if (check_digit(argv[i]))
-		{
-			free_argv(argc, argv);
-			error();
-		}
-	}
+			error_free_argv(argc, argv);
 	stack_a = get_stack(argc, argv);
 	free_argv(argc, argv);
 	check_duplicate(stack_a);

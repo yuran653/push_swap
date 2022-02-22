@@ -6,7 +6,7 @@
 /*   By: jgoldste <jgoldste@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 00:43:47 by jgoldste          #+#    #+#             */
-/*   Updated: 2022/02/21 18:34:50 by jgoldste         ###   ########.fr       */
+/*   Updated: 2022/02/22 06:51:06 by jgoldste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ t_elem	*init_element(int number)
 	return (element);
 }
 
-t_stack	*init_stack(void)
+t_stack	*init_stack(char name)
 {
 	t_stack	*stack;
 
@@ -60,5 +60,6 @@ t_stack	*init_stack(void)
 		return (NULL);
 	stack->head = NULL;
 	stack->size = 0;
+	stack->name = name;
 	return (stack);
 }
