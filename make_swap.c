@@ -6,7 +6,7 @@
 /*   By: jgoldste <jgoldste@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/19 03:17:22 by jgoldste          #+#    #+#             */
-/*   Updated: 2022/02/22 07:01:16 by jgoldste         ###   ########.fr       */
+/*   Updated: 2022/02/23 06:41:37 by jgoldste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,17 @@ void	make_swap(t_stack *stack, char chr)
 		stack->head->prev->next = tmp2;
 		tmp1->prev = tmp2;
 		stack->head = tmp2;
+		if (chr == 'y')
+			ft_printf("s%c\n", stack->name);
 	}
-	if (chr == 'y')
-		ft_printf("s%c\n", stack->name);
 }
 
 void	make_swap_both(t_stack *stack_a, t_stack *stack_b)
 {
-	make_swap(stack_a, '-');
-	make_swap(stack_b, '-');
-	ft_printf("ss\n");
+	if (stack_a->size > 1 || stack_b->size > 1)
+	{
+		make_swap(stack_a, '-');
+		make_swap(stack_b, '-');
+		ft_printf("ss\n");
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: jgoldste <jgoldste@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 19:52:03 by jgoldste          #+#    #+#             */
-/*   Updated: 2022/02/22 01:15:59 by jgoldste         ###   ########.fr       */
+/*   Updated: 2022/02/23 06:39:05 by jgoldste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	atoi_ps(char *arg, unsigned long long int *number)
 {
-	int						sign;
-	
+	int	sign;
+
 	sign = 1;
 	while (*arg == ' ' || *arg == '\t' || *arg == '\n'
 		|| *arg == '\v' || *arg == '\f' || *arg == '\r')

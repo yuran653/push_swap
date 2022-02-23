@@ -6,7 +6,7 @@
 /*   By: jgoldste <jgoldste@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 03:09:44 by jgoldste          #+#    #+#             */
-/*   Updated: 2022/02/22 06:52:30 by jgoldste         ###   ########.fr       */
+/*   Updated: 2022/02/23 06:42:22 by jgoldste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ int	check_digit(char *arg)
 
 	i = -1;
 	while (arg[++i])
+	{
 		if (!ft_isdigit(arg[i]))
 		{
 			if ((arg[i] != '-' && arg[i] != '+') || i != 0)
@@ -76,6 +77,7 @@ int	check_digit(char *arg)
 			if ((arg[0] == '-' || arg[0] == '+') && ft_strlen(arg) == 1)
 				return (1);
 		}
+	}
 	return (0);
 }
 
