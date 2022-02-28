@@ -6,7 +6,7 @@
 /*   By: jgoldste <jgoldste@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 01:19:29 by jgoldste          #+#    #+#             */
-/*   Updated: 2022/02/23 05:02:16 by jgoldste         ###   ########.fr       */
+/*   Updated: 2022/02/28 17:41:43 by jgoldste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,23 +38,24 @@ int		check_digit(char *arg);
 t_elem	*get_number(char *arg);
 int		atoi_ps(char *arg, unsigned long long int *number);
 void	check_duplicate(t_stack *stack_a);
+void	check_sort(t_stack *stack);
 t_stack	*init_stack(char name);
 t_elem	*init_element(int number);
 void	append_stack(t_stack *stack, t_elem *elem);
-void	make_swap(t_stack *stack, char chr);
+void	make_swap(t_stack *stack);
 void	make_swap_both(t_stack *stack_a, t_stack *stack_b);
-void	make_rotate(t_stack *stack, char chr);
+void	make_rotate(t_stack *stack);
 void	make_rotate_both(t_stack *stack_a, t_stack *stack_b);
-void	make_reverse(t_stack *stack, char chr);
+void	make_reverse(t_stack *stack);
 void	make_reverse_both(t_stack *stack_a, t_stack *stack_b);
 void	make_push(t_stack *stack_src, t_stack *stack_dst);
 void	add_stack(t_stack *stack_dst, t_elem *elem);
 void	free_argv(int argc, char **argv);
 void	free_stack(t_stack *stack);
-void	error(void);
-void	error_free_argv(int argc, char **argv);
-void	error_free_stack(t_stack *stack);
-void	error_free_all(int argc, char **argv, t_stack *stack);
+void	error(int ext);
+void	error_free_argv(int argc, char **argv, int ext);
+void	error_free_stack(t_stack *stack, int ext);
+void	error_free_all(int argc, char **argv, t_stack *stack, int ext);
 int		ft_printf(const char *str, ...);
 
 #endif

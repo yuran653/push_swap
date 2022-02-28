@@ -2,3 +2,6 @@ ARG=`ruby -e "puts (1..500).to_a.shuffle.join(' ')"`; ./push_swap $ARG | wc -l
 ARG=`ruby -e "puts (1..100).to_a.shuffle.join(' ')"`; ./push_swap $ARG | wc -l
 ARG=`ruby -e "puts (1..50).to_a.shuffle.join(' ')"`; ./push_swap $ARG | wc -l
 ARG=`ruby -e "puts (1..10).to_a.shuffle.join(' ')"`; ./push_swap $ARG | wc -l
+ARG=`ruby -e "puts (-2..2).to_a.shuffle.join(' ')"`; ./push_swap $ARG | wc -l
+
+`ruby -e "puts (-10..10).to_a.shuffle.join(' ')"`

@@ -6,7 +6,7 @@
 /*   By: jgoldste <jgoldste@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 01:21:16 by jgoldste          #+#    #+#             */
-/*   Updated: 2022/02/23 06:33:28 by jgoldste         ###   ########.fr       */
+/*   Updated: 2022/02/28 17:54:25 by jgoldste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,42 +70,42 @@ int	main(int argc, char **argv)
 	stack_a = validation(argc, argv);
 	stack_b = init_stack('b');
 	if (!stack_b)
-		error();
+		error(EXIT_FAILURE);
 	print_stacks(stack_a, stack_b);
-	make_push(stack_a, stack_b);
-	print_stacks(stack_a, stack_b);
-	make_push(stack_a, stack_b);
-	print_stacks(stack_a, stack_b);
-	make_push(stack_a, stack_b);
-	print_stacks(stack_a, stack_b);
-	make_push(stack_a, stack_b);
-	print_stacks(stack_a, stack_b);
-	make_swap(stack_a, 'y');
-	print_stacks(stack_a, stack_b);
-	make_swap(stack_b, 'y');
-	print_stacks(stack_a, stack_b);
-	make_swap_both(stack_a, stack_b);
-	print_stacks(stack_a, stack_b);
-	make_rotate(stack_a, 'y');
-	print_stacks(stack_a, stack_b);
-	make_rotate(stack_b, 'y');
-	print_stacks(stack_a, stack_b);
-	make_rotate_both(stack_a, stack_b);
-	print_stacks(stack_a, stack_b);
-	make_reverse(stack_a, 'y');
-	print_stacks(stack_a, stack_b);
-	make_reverse(stack_b, 'y');
-	print_stacks(stack_a, stack_b);
-	make_reverse_both(stack_a, stack_b);
-	print_stacks(stack_a, stack_b);
-	make_push(stack_b, stack_a);
-	print_stacks(stack_a, stack_b);
-	make_push(stack_b, stack_a);
-	print_stacks(stack_a, stack_b);
-	make_push(stack_b, stack_a);
-	print_stacks(stack_a, stack_b);
-	make_push(stack_b, stack_a);
-	print_stacks(stack_a, stack_b);
+	// make_push(stack_a, stack_b);
+	// print_stacks(stack_a, stack_b);
+	// make_push(stack_a, stack_b);
+	// print_stacks(stack_a, stack_b);
+	// make_push(stack_a, stack_b);
+	// print_stacks(stack_a, stack_b);
+	// make_push(stack_a, stack_b);
+	// print_stacks(stack_a, stack_b);
+	// make_swap(stack_a);
+	// print_stacks(stack_a, stack_b);
+	// make_swap(stack_b);
+	// print_stacks(stack_a, stack_b);
+	// make_swap_both(stack_a, stack_b);
+	// print_stacks(stack_a, stack_b);
+	// make_rotate(stack_a);
+	// print_stacks(stack_a, stack_b);
+	// make_rotate(stack_b);
+	// print_stacks(stack_a, stack_b);
+	// make_rotate_both(stack_a, stack_b);
+	// print_stacks(stack_a, stack_b);
+	// make_reverse(stack_a);
+	// print_stacks(stack_a, stack_b);
+	// make_reverse(stack_b);
+	// print_stacks(stack_a, stack_b);
+	// make_reverse_both(stack_a, stack_b);
+	// print_stacks(stack_a, stack_b);
+	// make_push(stack_b, stack_a);
+	// print_stacks(stack_a, stack_b);
+	// make_push(stack_b, stack_a);
+	// print_stacks(stack_a, stack_b);
+	// make_push(stack_b, stack_a);
+	// print_stacks(stack_a, stack_b);
+	// make_push(stack_b, stack_a);
+	// print_stacks(stack_a, stack_b);
 	free_stack(stack_a);
 	free_stack(stack_b);
 	return (0);

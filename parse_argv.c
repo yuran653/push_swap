@@ -6,11 +6,33 @@
 /*   By: jgoldste <jgoldste@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 03:09:44 by jgoldste          #+#    #+#             */
-/*   Updated: 2022/02/23 06:42:22 by jgoldste         ###   ########.fr       */
+/*   Updated: 2022/02/28 17:46:28 by jgoldste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	check_sort(t_stack *stack)
+{
+	int		i;
+	t_elem	*tmp;
+
+	i = stack->size - 1;
+	tmp = stack->head;
+	while (i--)
+	{
+		if (stack->head->next->number > stack->head->number)
+		{
+			if (!i)
+			{
+				free_stack(stack);
+				exit(EXIT_SUCCESS);
+			}
+			stack->head = stack->head->next;
+		}
+	}
+	stack->head = tmp;
+}
 
 void	check_duplicate(t_stack *stack_a)
 {
@@ -28,7 +50,7 @@ void	check_duplicate(t_stack *stack_a)
 			while (stop2 > 0)
 			{
 				if (compare == stack_a->head->next->number)
-					error_free_stack(stack_a);
+					error_free_stack(stack_a, EXIT_SUCCESS);
 				stack_a->head = stack_a->head->next;
 				stop2--;
 			}
@@ -49,12 +71,12 @@ t_stack	*get_stack(int argc, char **argv)
 		i--;
 	stack_a = init_stack('a');
 	if (!stack_a)
-		error_free_argv(argc, argv);
+		error_free_argv(argc, argv, EXIT_FAILURE);
 	while (argv[++i])
 	{
 		elem = get_number(argv[i]);
 		if (!elem)
-			error_free_all(argc, argv, stack_a);
+			error_free_all(argc, argv, stack_a, EXIT_FAILURE);
 		append_stack(stack_a, elem);
 		stack_a->size = i;
 		if (argc == 2)
@@ -91,14 +113,15 @@ t_stack	*validation(int argc, char **argv)
 	{
 		argv = ft_split(argv[1], ' ');
 		if (!argv)
-			error();
+			error(EXIT_FAILURE);
 		i--;
 	}
 	while (argv[++i])
 		if (check_digit(argv[i]))
-			error_free_argv(argc, argv);
+			error_free_argv(argc, argv, EXIT_SUCCESS);
 	stack_a = get_stack(argc, argv);
 	free_argv(argc, argv);
 	check_duplicate(stack_a);
+	check_sort(stack_a);
 	return (stack_a);
 }
