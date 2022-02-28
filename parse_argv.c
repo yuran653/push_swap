@@ -6,13 +6,13 @@
 /*   By: jgoldste <jgoldste@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 03:09:44 by jgoldste          #+#    #+#             */
-/*   Updated: 2022/02/28 17:46:28 by jgoldste         ###   ########.fr       */
+/*   Updated: 2022/02/28 21:33:12 by jgoldste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	check_sort(t_stack *stack)
+int	check_sort(t_stack *stack)
 {
 	int		i;
 	t_elem	*tmp;
@@ -24,14 +24,15 @@ void	check_sort(t_stack *stack)
 		if (stack->head->next->number > stack->head->number)
 		{
 			if (!i)
-			{
-				free_stack(stack);
-				exit(EXIT_SUCCESS);
+			{	
+				stack->head = tmp;
+				return (1);
 			}
 			stack->head = stack->head->next;
 		}
 	}
 	stack->head = tmp;
+	return (0);
 }
 
 void	check_duplicate(t_stack *stack_a)
@@ -122,6 +123,10 @@ t_stack	*validation(int argc, char **argv)
 	stack_a = get_stack(argc, argv);
 	free_argv(argc, argv);
 	check_duplicate(stack_a);
-	check_sort(stack_a);
+	if (check_sort(stack_a))
+	{
+		free_stack(stack_a);
+		exit(EXIT_SUCCESS);
+	}
 	return (stack_a);
 }
