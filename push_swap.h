@@ -6,7 +6,7 @@
 /*   By: jgoldste <jgoldste@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 01:19:29 by jgoldste          #+#    #+#             */
-/*   Updated: 2022/02/28 21:19:34 by jgoldste         ###   ########.fr       */
+/*   Updated: 2022/03/01 21:58:56 by jgoldste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,7 @@ void	error_free_stack(t_stack *stack, int ext);
 void	error_free_all(int argc, char **argv, t_stack *stack, int ext);
 int		ft_printf(const char *str, ...);
 void	sort(t_stack *stack_a, t_stack *stack_b);
+void	sort_next(t_stack *stack_a, t_stack *stack_b);
+void	sort_insert(t_stack *stack_a, t_stack *stack_b);
 
 #endif

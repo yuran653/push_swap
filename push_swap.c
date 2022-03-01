@@ -6,7 +6,7 @@
 /*   By: jgoldste <jgoldste@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 01:21:16 by jgoldste          #+#    #+#             */
-/*   Updated: 2022/02/28 21:33:40 by jgoldste         ###   ########.fr       */
+/*   Updated: 2022/03/01 17:58:12 by jgoldste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,8 @@ int	main(int argc, char **argv)
 	if (!stack_b)
 		error(EXIT_FAILURE);
 	print_stacks(stack_a, stack_b);
-	sort(stack_a, stack_b);
+	if (stack_a->size > 1)
+		sort(stack_a, stack_b);
 	// make_push(stack_a, stack_b);
 	// print_stacks(stack_a, stack_b);
 	// make_push(stack_a, stack_b);
