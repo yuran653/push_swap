@@ -6,7 +6,7 @@
 /*   By: jgoldste <jgoldste@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 01:19:29 by jgoldste          #+#    #+#             */
-/*   Updated: 2022/03/01 21:58:56 by jgoldste         ###   ########.fr       */
+/*   Updated: 2022/03/03 17:40:14 by jgoldste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 typedef struct s_elem
 {
 	int				number;
+	int				index;
 	struct s_elem	*next;
 	struct s_elem	*prev;
 }	t_elem;

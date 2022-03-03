@@ -6,7 +6,7 @@
 /*   By: jgoldste <jgoldste@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 20:49:20 by jgoldste          #+#    #+#             */
-/*   Updated: 2022/03/01 22:48:53 by jgoldste         ###   ########.fr       */
+/*   Updated: 2022/03/03 17:40:33 by jgoldste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,4 +87,3 @@ void	sort(t_stack *stack_a, t_stack *stack_b)
 	// 	while (stack_a->head->number != stack_a->min)
 	// 		make_reverse(stack_a);
 }
-

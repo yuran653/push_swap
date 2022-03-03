@@ -6,7 +6,7 @@
 /*   By: jgoldste <jgoldste@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 00:43:47 by jgoldste          #+#    #+#             */
-/*   Updated: 2022/02/25 06:51:42 by jgoldste         ###   ########.fr       */
+/*   Updated: 2022/03/03 16:30:13 by jgoldste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ t_elem	*init_element(int number)
 	if (!element)
 		return (NULL);
 	element->number = number;
+	element->index = -1;
 	element->next = NULL;
 	element->prev = NULL;
 	return (element);
