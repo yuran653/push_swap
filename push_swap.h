@@ -6,7 +6,7 @@
 /*   By: jgoldste <jgoldste@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 01:19:29 by jgoldste          #+#    #+#             */
-/*   Updated: 2022/03/03 17:40:14 by jgoldste         ###   ########.fr       */
+/*   Updated: 2022/03/06 02:08:10 by jgoldste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,11 @@ typedef struct s_stack
 t_stack	*validation(int argc, char **argv);
 t_stack	*get_stack(int argc, char **argv);
 int		check_digit(char *arg);
-t_elem	*get_number(char *arg);
+int		array_size(int argc, char **argv);
+void	get_int_array(int argc, char **argv, int *unsort);
 int		atoi_ps(char *arg, unsigned long long int *number);
-void	check_duplicate(t_stack *stack_a);
-int		check_sort(t_stack *stack);
+void	check_duplicate(int *unsort, int size);
+int		check_sort(int *unsort, int size);
 t_stack	*init_stack(char name);
 t_elem	*init_element(int number);
 void	append_stack(t_stack *stack, t_elem *elem);
@@ -54,8 +55,10 @@ void	make_reverse_both(t_stack *stack_a, t_stack *stack_b);
 void	make_push(t_stack *stack_src, t_stack *stack_dst);
 void	add_stack(t_stack *stack_dst, t_elem *elem);
 void	free_argv(int argc, char **argv);
+void	free_array_exit(int *array);
 void	free_stack(t_stack *stack);
 void	error(int ext);
+void	error_free_int(int *array, int ext);
 void	error_free_argv(int argc, char **argv, int ext);
 void	error_free_stack(t_stack *stack, int ext);
 void	error_free_all(int argc, char **argv, t_stack *stack, int ext);

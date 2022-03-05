@@ -6,11 +6,17 @@
 /*   By: jgoldste <jgoldste@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 11:22:18 by jgoldste          #+#    #+#             */
-/*   Updated: 2022/02/28 17:51:25 by jgoldste         ###   ########.fr       */
+/*   Updated: 2022/03/06 02:06:28 by jgoldste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	free_array_exit(int *array)
+{
+	free(array);
+	exit(EXIT_SUCCESS);
+}
 
 void	free_argv(int argc, char **argv)
 {

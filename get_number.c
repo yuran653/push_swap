@@ -6,11 +6,23 @@
 /*   By: jgoldste <jgoldste@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 19:52:03 by jgoldste          #+#    #+#             */
-/*   Updated: 2022/02/23 06:39:05 by jgoldste         ###   ########.fr       */
+/*   Updated: 2022/03/06 02:12:34 by jgoldste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	array_size(int argc, char **argv)
+{
+	int	size;
+
+	size = 0;
+	while (argv[size])
+		size++;
+	if (argc != 2)
+		size--;
+	return (size);
+}
 
 int	atoi_ps(char *arg, unsigned long long int *number)
 {
@@ -34,20 +46,26 @@ int	atoi_ps(char *arg, unsigned long long int *number)
 	return (sign);
 }
 
-t_elem	*get_number(char *arg)
+void	get_int_array(int argc, char **argv, int *unsort)
 {
+	int						i;
+	int						j;
 	int						sign;
 	unsigned long long int	num;
-	t_elem					*elem;
 
-	num = 0;
-	sign = atoi_ps(arg, &num);
-	if (sign == -1 && num > 2147483648)
-		return (NULL);
-	if (sign == 1 && num > 2147483647)
-		return (NULL);
-	elem = init_element(sign * (int)num);
-	if (!elem)
-		return (NULL);
-	return (elem);
+	i = 0;
+	if (argc == 2)
+		i--;
+	j = 0;
+	while (argv[++i])
+	{
+		num = 0;
+		sign = atoi_ps(argv[i], &num);
+		if (sign == -1 && num > 2147483648)
+			error_free_argv(argc, argv, EXIT_SUCCESS);
+		if (sign == 1 && num > 2147483647)
+			error_free_argv(argc, argv, EXIT_SUCCESS);
+		unsort[j++] = sign * num;
+	}
+	free_argv(argc, argv);
 }
