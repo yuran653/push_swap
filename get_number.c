@@ -6,7 +6,7 @@
 /*   By: jgoldste <jgoldste@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 19:52:03 by jgoldste          #+#    #+#             */
-/*   Updated: 2022/03/06 02:12:34 by jgoldste         ###   ########.fr       */
+/*   Updated: 2022/03/06 18:13:09 by jgoldste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,10 @@ void	get_int_array(int argc, char **argv, int *unsort)
 		num = 0;
 		sign = atoi_ps(argv[i], &num);
 		if (sign == -1 && num > 2147483648)
-			error_free_argv(argc, argv, EXIT_SUCCESS);
+			free_argv_exit(argc, argv, EXIT_SUCCESS, 1);
 		if (sign == 1 && num > 2147483647)
-			error_free_argv(argc, argv, EXIT_SUCCESS);
+			free_argv_exit(argc, argv, EXIT_SUCCESS, 1);
 		unsort[j++] = sign * num;
 	}
-	free_argv(argc, argv);
+	free_argv_exit(argc, argv, -1, 0);
 }

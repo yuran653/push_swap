@@ -6,7 +6,7 @@
 /*   By: jgoldste <jgoldste@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 03:09:44 by jgoldste          #+#    #+#             */
-/*   Updated: 2022/03/06 02:26:26 by jgoldste         ###   ########.fr       */
+/*   Updated: 2022/03/06 18:20:49 by jgoldste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	check_duplicate(int *unsort, int size)
 			while (++j < size)
 			{
 				if (unsort[i] == unsort[j] && i != j)
-					error_free_int(unsort, EXIT_SUCCESS);
+					free_array_exit(unsort, EXIT_FAILURE, 1);
 			}
 		}
 	}
@@ -52,19 +52,25 @@ t_stack	*get_stack(int argc, char **argv)
 	int		size;
 	// int		*sort;
 	int		*unsort;
-	t_elem	*elem;
+	// t_elem	*elem;
 	t_stack	*stack_a;
 
 	size = array_size(argc, argv);
 	unsort = (int *)malloc(sizeof(int) * size);
+	if (!unsort)
+		free_argv_exit(argc, argv, EXIT_FAILURE, 1);
 	get_int_array(argc, argv, unsort);
 	check_duplicate(unsort, size);
 	if (check_sort(unsort, size))
-		free_array_exit(unsort);
+		free_array_exit(unsort, EXIT_SUCCESS, 0);
 	// sort = (int *)malloc(sizeof(int) * size);
+	int i;
+	for (i = 0; i < size; i++)
+		ft_printf("\tunsort[%d] = [%d]\n", i, unsort[i]);
+	free_array_exit(unsort, EXIT_SUCCESS, 0);
 	stack_a = init_stack('a');
 	if (!stack_a)
-		error_free_argv(argc, argv, EXIT_FAILURE);
+		free_array_exit(unsort, EXIT_FAILURE, 1);
 	
 	return (stack_a);
 }
@@ -122,12 +128,12 @@ t_stack	*validation(int argc, char **argv)
 	{
 		argv = ft_split(argv[1], ' ');
 		if (!argv)
-			error(EXIT_FAILURE);
+			exit_error(EXIT_FAILURE, 1);
 		i--;
 	}
 	while (argv[++i])
 		if (check_digit(argv[i]))
-			error_free_argv(argc, argv, EXIT_SUCCESS);
+			free_argv_exit(argc, argv, EXIT_SUCCESS, 1);
 	stack_a = get_stack(argc, argv);
 	return (stack_a);
 }
