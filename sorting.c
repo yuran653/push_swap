@@ -6,7 +6,7 @@
 /*   By: jgoldste <jgoldste@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 20:49:20 by jgoldste          #+#    #+#             */
-/*   Updated: 2022/03/07 18:16:02 by jgoldste         ###   ########.fr       */
+/*   Updated: 2022/03/07 21:54:32 by jgoldste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,62 +51,71 @@ void	sort_insert(t_stack *stack_a, t_stack *stack_b)
 		}
 	else
 	{
-		make_reverse(stack_a);
-		make_reverse(stack_a);
+		while (stack_a->head->index != stack_b->head->index + 1)
+			make_rotate(stack_a);
 		make_push(stack_b, stack_a);
 	}
 }
 
-void	sort_next(t_stack *stack_a, t_stack *stack_b)
+void	set_min_max(t_stack *stack)
+{
+	stack->min = stack->head->index;
+	stack->max = stack->head->prev->index;
+}
+
+void	sort_min_max(t_stack *stack_a, t_stack *stack_b)
 {
 	int	i;
 
-	i = stack_b->size;
-	while (i--)
+	i = stack_b->size + 1;
+	while (--i)
 	{
 		if (stack_b->head->index < stack_a->head->index)
 		{
 			make_push(stack_b, stack_a);
-			stack_a->min = stack_a->head->index;
+			set_min_max(stack_a);
 		}
-		else if (stack_b->head->index > stack_a->head->index)
+		else if (stack_b->head->index > stack_a->head->prev->index)
 		{
 			make_push(stack_b, stack_a);
-			make_reverse(stack_a);
-			stack_a->max = stack_a->head->prev->index;
+			make_rotate(stack_a);
+			set_min_max(stack_a);
 		}
 		else
-		{
-			stack_a->min = stack_a->head->index;
-			stack_a->max = stack_a->head->prev->index;
 			sort_insert(stack_a, stack_b);
-		}
 	}
 }
 
 void	sort(t_stack *stack_a, t_stack *stack_b)
 {
-	while (stack_a->size > 3)
-		make_push(stack_a, stack_b);
-	if (!check_sort_stack(stack_a))
-	{
-		if (stack_a->head->index > stack_a->head->next->index)
-		{
-			if (stack_a->head->next->index > stack_a->head->prev->index
-				|| stack_a->head->prev->index > stack_a->head->index)
-				make_swap(stack_a);
-		}
-		else if (stack_a->head->prev->index > stack_a->head->index)
-			make_swap(stack_a);
-		if (stack_a->head->index > stack_a->head->next->index)
-			make_rotate(stack_a);
-		else if (stack_a->head->next->index > stack_a->head->index
-			&& stack_a->head->next->index > stack_a->head->prev->index)
+	int	i;
+
+	i = stack_a->size / 2;
+	stack_a->mid = stack_a->size / 2;
+	while (stack_a->size > stack_a->mid + 1)
+		if (stack_a->head->index < stack_a->mid)
+			make_push(stack_a, stack_b);
+		else
 			make_reverse(stack_a);
-	}
-	if (stack_b->size)
-		sort_next(stack_a, stack_b);
-	if (stack_a->size > 3)
-		while (stack_a->head->index != stack_a->min)
-			make_reverse(stack_a);
+	// if (!check_sort_stack(stack_a) && stack_a->size == 3)
+	// {
+	// 	if (stack_a->head->index > stack_a->head->next->index)
+	// 	{
+	// 		if (stack_a->head->next->index > stack_a->head->prev->index
+	// 			|| stack_a->head->prev->index > stack_a->head->index)
+	// 			make_swap(stack_a);
+	// 	}
+	// 	else if (stack_a->head->prev->index > stack_a->head->index)
+	// 		make_swap(stack_a);
+	// 	if (stack_a->head->index > stack_a->head->next->index)
+	// 		make_rotate(stack_a);
+	// 	else if (stack_a->head->next->index > stack_a->head->index
+	// 		&& stack_a->head->next->index > stack_a->head->prev->index)
+	// 		make_reverse(stack_a);
+	// }
+	// if (stack_b->size)
+	// 	sort_min_max(stack_a, stack_b);
+	// if (stack_a->size > 3) //!!!!!
+	// 	while (stack_a->head->index)
+	// 		make_reverse(stack_a);
 }
