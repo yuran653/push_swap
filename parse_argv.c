@@ -6,7 +6,7 @@
 /*   By: jgoldste <jgoldste@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 03:09:44 by jgoldste          #+#    #+#             */
-/*   Updated: 2022/03/06 18:20:49 by jgoldste         ###   ########.fr       */
+/*   Updated: 2022/03/07 16:28:59 by jgoldste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	check_duplicate(int *unsort, int size)
 			while (++j < size)
 			{
 				if (unsort[i] == unsort[j] && i != j)
-					free_array_exit(unsort, EXIT_FAILURE, 1);
+					free_array_exit(unsort, EXIT_SUCCESS, 1);
 			}
 		}
 	}
@@ -50,7 +50,7 @@ void	check_duplicate(int *unsort, int size)
 t_stack	*get_stack(int argc, char **argv)
 {
 	int		size;
-	// int		*sort;
+	int		*sort;
 	int		*unsort;
 	// t_elem	*elem;
 	t_stack	*stack_a;
@@ -63,11 +63,15 @@ t_stack	*get_stack(int argc, char **argv)
 	check_duplicate(unsort, size);
 	if (check_sort(unsort, size))
 		free_array_exit(unsort, EXIT_SUCCESS, 0);
-	// sort = (int *)malloc(sizeof(int) * size);
-	int i;
+	sort = array_copy(unsort, size);
+	int i; //!!!!!
 	for (i = 0; i < size; i++)
-		ft_printf("\tunsort[%d] = [%d]\n", i, unsort[i]);
-	free_array_exit(unsort, EXIT_SUCCESS, 0);
+	{
+		ft_printf("\tunsort[%d] = [%d]", i, unsort[i]);
+		ft_printf("\tsort[%d] = [%d]\n", i, sort[i]);
+	}
+	free_array_exit(sort, -1, 0);
+	free_array_exit(unsort, EXIT_SUCCESS, 0); //!!!!!
 	stack_a = init_stack('a');
 	if (!stack_a)
 		free_array_exit(unsort, EXIT_FAILURE, 1);

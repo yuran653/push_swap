@@ -6,11 +6,53 @@
 /*   By: jgoldste <jgoldste@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 19:52:03 by jgoldste          #+#    #+#             */
-/*   Updated: 2022/03/06 18:13:09 by jgoldste         ###   ########.fr       */
+/*   Updated: 2022/03/07 16:14:48 by jgoldste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+static void	array_sort(int *dst, int size)
+{
+	int	i;
+	int	j;
+	int	min;
+	int	tmp[2];
+
+	i = -1;
+	while (++i < size - 1)
+	{
+		tmp[0] = dst[i];
+		tmp[1] = i;
+		min = dst[i];
+		j = i;
+		while (++j < size)
+		{
+			if (dst[j] < min)
+			{
+				min = dst[j];
+				tmp[1] = j;
+			}
+		}
+		dst[i] = min;
+		dst[tmp[1]] = tmp[0];
+	}
+}
+
+int	*array_copy(int *src, int size)
+{
+	int	i;
+	int	*dst;
+
+	i = -1;
+	dst = (int *)malloc(sizeof(int) * size);
+	if (!dst)
+		free_array_exit(src, EXIT_FAILURE, 1);
+	while (++i < size)
+		dst[i] = src[i];
+	array_sort(dst, size);
+	return (dst);
+}
 
 int	array_size(int argc, char **argv)
 {

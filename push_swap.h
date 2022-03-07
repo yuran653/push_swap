@@ -6,7 +6,7 @@
 /*   By: jgoldste <jgoldste@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 01:19:29 by jgoldste          #+#    #+#             */
-/*   Updated: 2022/03/06 18:19:45 by jgoldste         ###   ########.fr       */
+/*   Updated: 2022/03/07 14:16:05 by jgoldste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void	get_int_array(int argc, char **argv, int *unsort);
 int		atoi_ps(char *arg, unsigned long long int *number);
 void	check_duplicate(int *unsort, int size);
 int		check_sort(int *unsort, int size);
+int		*array_copy(int *src, int size);
 t_stack	*init_stack(char name);
 t_elem	*init_element(int number);
 void	append_stack(t_stack *stack, t_elem *elem);
