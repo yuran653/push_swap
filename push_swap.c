@@ -6,7 +6,7 @@
 /*   By: jgoldste <jgoldste@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 01:21:16 by jgoldste          #+#    #+#             */
-/*   Updated: 2022/03/06 18:20:07 by jgoldste         ###   ########.fr       */
+/*   Updated: 2022/03/07 18:18:18 by jgoldste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,13 @@ void	print_stacks(t_stack *stack_a, t_stack *stack_b)
 		while (stop--)
 		{
 			if (stop_a > 0)
-				printf("\t\t[%d]", tmp_a->number);
+				printf("\t\t%d[%d]", tmp_a->number, tmp_a->index);
 			else
 				printf("\t\t[EMPTY]");
 			if (stack_a->size > 1)
 				tmp_a = tmp_a->next;
 			if (stop_b > 0)
-				printf("\t\t\t[%d]\n", tmp_b->number);
+				printf("\t\t\t%d[%d]\n", tmp_b->number, tmp_b->index);
 			else
 				printf("\t\t\t[EMPTY]\n");
 			if (stack_b->size > 1)
@@ -72,9 +72,8 @@ int	main(int argc, char **argv)
 	if (!stack_b)
 		exit_error(EXIT_FAILURE, 1);
 	print_stacks(stack_a, stack_b);
-	// if (stack_a->size > 1)
-		// init_sort_stack(stack_a);
-		// sort(stack_a, stack_b);
+	if (stack_a->size > 1)
+		sort(stack_a, stack_b);
 	// make_push(stack_a, stack_b);
 	// print_stacks(stack_a, stack_b);
 	// make_push(stack_a, stack_b);
@@ -109,12 +108,12 @@ int	main(int argc, char **argv)
 	// print_stacks(stack_a, stack_b);
 	// make_push(stack_b, stack_a);
 	// print_stacks(stack_a, stack_b);
-	// if (check_sort(stack_a))
-	// 	ft_printf("OK\n");
-	// else
-	// 	ft_printf("KO\n");
-	// print_stacks(stack_a, stack_b);
-	free_stack_exit(stack_a, -1, 1);
-	free_stack_exit(stack_b, -1, 1);
+	if (check_sort_stack(stack_a))
+		ft_printf("OK\n");
+	else
+		ft_printf("KO\n");
+	print_stacks(stack_a, stack_b);
+	free_stack_exit(stack_a, -1, 0);
+	free_stack_exit(stack_b, -1, 0);
 	return (0);
 }

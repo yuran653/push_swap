@@ -6,7 +6,7 @@
 #    By: jgoldste <jgoldste@student.21-school.ru    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/02 01:09:45 by jgoldste          #+#    #+#              #
-#    Updated: 2022/03/06 17:59:40 by jgoldste         ###   ########.fr        #
+#    Updated: 2022/03/07 18:07:18 by jgoldste         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ SRCS		=	push_swap.c			parse_argv.c\
 				init_stack.c		get_number.c\
 				make_swap.c			make_rotate_reverse.c		make_push.c\
 				free_error_func.c	ft_printf.c\
-#				sorting.c
+				sorting.c
 
 SRCS_B		=	push_swap_bonus.c
 

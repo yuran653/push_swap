@@ -6,11 +6,29 @@
 /*   By: jgoldste <jgoldste@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 00:43:47 by jgoldste          #+#    #+#             */
-/*   Updated: 2022/03/03 16:30:13 by jgoldste         ###   ########.fr       */
+/*   Updated: 2022/03/07 18:04:23 by jgoldste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	fill_stack(t_stack *stack, int *unsort, int *sort)
+{
+	int	index;
+	int	i;
+	int	j;
+
+	i = -1;
+	while (++i < (int)stack->size)
+	{
+		j = -1;
+		while (++j < (int)stack->size)
+			if (unsort[i] == sort[j])
+				index = j;
+		append_stack(stack, (init_element(unsort[i], index)));
+	}
+	free_array2_exit(unsort, sort, -1, 0);
+}
 
 void	append_stack(t_stack *stack, t_elem *elem)
 {
@@ -38,7 +56,7 @@ void	append_stack(t_stack *stack, t_elem *elem)
 		stack->head = elem;
 }
 
-t_elem	*init_element(int number)
+t_elem	*init_element(int number, int index)
 {
 	t_elem	*element;
 
@@ -46,7 +64,7 @@ t_elem	*init_element(int number)
 	if (!element)
 		return (NULL);
 	element->number = number;
-	element->index = -1;
+	element->index = index;
 	element->next = NULL;
 	element->prev = NULL;
 	return (element);
