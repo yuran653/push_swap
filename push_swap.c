@@ -6,7 +6,7 @@
 /*   By: jgoldste <jgoldste@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 01:21:16 by jgoldste          #+#    #+#             */
-/*   Updated: 2022/03/07 21:36:54 by jgoldste         ###   ########.fr       */
+/*   Updated: 2022/03/09 01:39:47 by jgoldste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int	main(int argc, char **argv)
 	stack_b = init_stack('b');
 	if (!stack_b)
 		exit_error(EXIT_FAILURE, 1);
-	print_stacks(stack_a, stack_b);
+	// print_stacks(stack_a, stack_b);
 	if (stack_a->size > 1)
 	{
 		if (stack_a->size == 2)
@@ -113,11 +113,11 @@ int	main(int argc, char **argv)
 	// print_stacks(stack_a, stack_b);
 	// make_push(stack_b, stack_a);
 	// print_stacks(stack_a, stack_b);
-	if (check_sort_stack(stack_a))
-		ft_printf("OK\n");
-	else
-		ft_printf("KO\n");
-	print_stacks(stack_a, stack_b);
+	// if (check_sort_stack(stack_a))
+	// 	ft_printf("--KO--\n");
+	// else
+	// 	ft_printf("--OK--\n");
+	// print_stacks(stack_a, stack_b);
 	free_stack_exit(stack_a, -1, 0);
 	free_stack_exit(stack_b, -1, 0);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: jgoldste <jgoldste@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 03:09:44 by jgoldste          #+#    #+#             */
-/*   Updated: 2022/03/07 18:13:25 by jgoldste         ###   ########.fr       */
+/*   Updated: 2022/03/08 16:01:54 by jgoldste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@ int	check_sort_int(int *unsort, int size)
 	i = 0;
 	while (i < size - 1)
 	{
-		if (unsort[i] < unsort[i + 1])
-			i++;
+		if (unsort[i] > unsort[i + 1])
+			return (1);
 		else
-			return (0);
+			i++;
 	}
-	return (1);
+	return (0);
 }
 
 void	check_duplicate(int *unsort, int size)
@@ -60,7 +60,7 @@ t_stack	*get_stack(int argc, char **argv)
 		free_argv_exit(argc, argv, EXIT_FAILURE, 1);
 	get_int_array(argc, argv, unsort);
 	check_duplicate(unsort, size);
-	if (check_sort_int(unsort, size))
+	if (!check_sort_int(unsort, size))
 		free_array_exit(unsort, EXIT_SUCCESS, 0);
 	sort = array_copy(unsort, size);
 	stack_a = init_stack('a');
