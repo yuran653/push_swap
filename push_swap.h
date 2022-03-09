@@ -6,7 +6,7 @@
 /*   By: jgoldste <jgoldste@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 01:19:29 by jgoldste          #+#    #+#             */
-/*   Updated: 2022/03/09 00:16:41 by jgoldste         ###   ########.fr       */
+/*   Updated: 2022/03/09 18:35:10 by jgoldste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,5 +70,8 @@ void	sort_three(t_stack *stack);
 void	sort_upto_five(t_stack *stack_a, t_stack *stack_b);
 void	sort_more_five(t_stack *stack_a, t_stack *stack_b);
 void	set_min_mid_max(t_stack *stack);
+int		check_btm(t_stack *stack);
+int		check_top(t_stack *stack);
+
 
 #endif

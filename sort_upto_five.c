@@ -6,7 +6,7 @@
 /*   By: jgoldste <jgoldste@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 20:49:20 by jgoldste          #+#    #+#             */
-/*   Updated: 2022/03/09 01:05:29 by jgoldste         ###   ########.fr       */
+/*   Updated: 2022/03/09 18:30:33 by jgoldste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,17 +75,16 @@ void	divide_stack(t_stack *stack_src, t_stack *stack_dst)
 	half = stack_src->size / 2 + stack_src->size % 2;
 	if (half < 3)
 		half = 3;
-	if (stack_src->size > 3)
+	while (stack_src->size > half)
 	{
-		while (stack_src->size > half)
+		if (stack_src->head->index < stack_src->mid)
+			make_push(stack_src, stack_dst);
+		else
 		{
-			if (stack_src->head->index < stack_src->mid)
-				make_push(stack_src, stack_dst);
-			else if (stack_src->head->next->index < stack_src->mid
-				|| stack_src->head->next->next->index < stack_src->mid)
-				make_rotate(stack_src);
+			if (check_btm(stack_src) <= check_top(stack_src))
+					make_rotate(stack_src);
 			else
-				make_reverse(stack_src);
+					make_reverse(stack_src);
 		}
 	}
 }
