@@ -6,7 +6,7 @@
 /*   By: jgoldste <jgoldste@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 20:49:20 by jgoldste          #+#    #+#             */
-/*   Updated: 2022/03/09 18:30:33 by jgoldste         ###   ########.fr       */
+/*   Updated: 2022/03/10 00:58:30 by jgoldste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	sort_three(t_stack *stack)
 
 void	divide_stack(t_stack *stack_src, t_stack *stack_dst)
 {
-	int	half;
+	unsigned int	half;
 
 	set_min_mid_max(stack_src);
 	half = stack_src->size / 2 + stack_src->size % 2;
@@ -87,6 +87,7 @@ void	divide_stack(t_stack *stack_src, t_stack *stack_dst)
 					make_reverse(stack_src);
 		}
 	}
+	set_min_mid_max(stack_src);
 }
 
 void	sort(t_stack *stack_a, t_stack *stack_b)

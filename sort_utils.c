@@ -6,7 +6,7 @@
 /*   By: jgoldste <jgoldste@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 18:25:36 by jgoldste          #+#    #+#             */
-/*   Updated: 2022/03/09 18:35:17 by jgoldste         ###   ########.fr       */
+/*   Updated: 2022/03/10 00:53:10 by jgoldste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ void	set_min_mid_max(t_stack *stack)
 			stack->head = stack->head->next;
 	}
 	stack->mid = (stack->max + stack->min) / 2 + (stack->max + stack->min) % 2;
+	if (stack->size == 4)
+		stack->mid--;
 	stack->head = fix;
 }
 

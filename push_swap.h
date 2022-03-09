@@ -6,7 +6,7 @@
 /*   By: jgoldste <jgoldste@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 01:19:29 by jgoldste          #+#    #+#             */
-/*   Updated: 2022/03/09 18:35:10 by jgoldste         ###   ########.fr       */
+/*   Updated: 2022/03/09 19:40:53 by jgoldste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ typedef struct s_elem
 typedef struct s_stack
 {
 	t_elem			*head;
-	int	size;
+	unsigned int	size;
 	int				min;
 	int				mid;
 	int				max;
