@@ -6,7 +6,7 @@
 /*   By: jgoldste <jgoldste@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 01:21:16 by jgoldste          #+#    #+#             */
-/*   Updated: 2022/03/09 01:39:47 by jgoldste         ###   ########.fr       */
+/*   Updated: 2022/03/10 19:43:35 by jgoldste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ void	print_stacks(t_stack *stack_a, t_stack *stack_b)
 		printf("\tHEAD\t[%d]", stack_b->head->number);
 	else
 		printf("\tHEAD\t[EMPTY]");
+	printf("\n\tSIZE\t[%d]\t\tSIZE\t[%d]", stack_a->size, stack_b->size);
 	printf("\n\t--------------------\t--------------------\n\n\n\n");
 	}
 }
@@ -72,6 +73,7 @@ int	main(int argc, char **argv)
 	if (!stack_b)
 		exit_error(EXIT_FAILURE, 1);
 	// print_stacks(stack_a, stack_b);
+	// exit(0);
 	if (stack_a->size > 1)
 	{
 		if (stack_a->size == 2)

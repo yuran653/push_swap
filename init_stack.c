@@ -6,7 +6,7 @@
 /*   By: jgoldste <jgoldste@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 00:43:47 by jgoldste          #+#    #+#             */
-/*   Updated: 2022/03/08 21:37:10 by jgoldste         ###   ########.fr       */
+/*   Updated: 2022/03/10 19:39:16 by jgoldste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	fill_stack(t_stack *stack, int *unsort, int *sort)
 		j = -1;
 		while (++j < (int)stack->size)
 			if (unsort[i] == sort[j])
-				index = j;
+				index = j + 1;
 		append_stack(stack, (init_element(unsort[i], index)));
 	}
 	free_array2_exit(unsort, sort, -1, 0);

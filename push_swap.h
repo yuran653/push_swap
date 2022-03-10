@@ -6,7 +6,7 @@
 /*   By: jgoldste <jgoldste@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 01:19:29 by jgoldste          #+#    #+#             */
-/*   Updated: 2022/03/09 19:40:53 by jgoldste         ###   ########.fr       */
+/*   Updated: 2022/03/10 23:22:44 by jgoldste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,13 +65,22 @@ void	free_stack_exit(t_stack *stack, int ext, int err);
 void	exit_error(int ext, int err);
 int		ft_printf(const char *str, ...);
 void	sort(t_stack *stack_a, t_stack *stack_b);
-void	divide_stack(t_stack *stack_src, t_stack *stack_dst);
+void	set_min_mid_max(t_stack *stack);
+void	divide_stack_min(t_stack *stack_src, t_stack *stack_dst);
+void	divide_stack_max(t_stack *stack_src, t_stack *stack_dst);
 void	sort_three(t_stack *stack);
 void	sort_upto_five(t_stack *stack_a, t_stack *stack_b);
 void	sort_more_five(t_stack *stack_a, t_stack *stack_b);
-void	set_min_mid_max(t_stack *stack);
-int		check_btm(t_stack *stack);
-int		check_top(t_stack *stack);
+void	sort_insert(t_stack *stack_a, t_stack *stack_b);
+int		find_top(t_stack *stack_a, t_stack *stack_b, int value);
+int		find_btm(t_stack *stack_a, t_stack *stack_b, int value);
+void	insert_two_top(t_stack *stack_a, t_stack *stack_b, int value);
+void	insert_two_btm(t_stack *stack_a, t_stack *stack_b, int value);
+int		check_min_btm(t_stack *stack);
+int		check_min_top(t_stack *stack);
+int		check_max_btm(t_stack *stack);
+int		check_max_top(t_stack *stack);
 
+void	print_stacks(t_stack *stack_a, t_stack *stack_b);
 
 #endif
