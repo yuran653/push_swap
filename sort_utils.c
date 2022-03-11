@@ -6,7 +6,7 @@
 /*   By: jgoldste <jgoldste@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 18:25:36 by jgoldste          #+#    #+#             */
-/*   Updated: 2022/03/11 00:40:04 by jgoldste         ###   ########.fr       */
+/*   Updated: 2022/03/11 02:54:45 by jgoldste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,8 @@ void	divide_stack_max(t_stack *stack_src, t_stack *stack_dst)
 {
 	unsigned int	half;
 
+	half = stack_src->size / 2;
 	set_min_mid_max(stack_src);
-	half = stack_src->size / 2 + stack_src->size % 2;
 	while (stack_src->size > half)
 	{
 		if (stack_src->head->index >= stack_src->mid)
@@ -77,14 +77,15 @@ void	divide_stack_max(t_stack *stack_src, t_stack *stack_dst)
 		}
 	}
 	set_min_mid_max(stack_src);
+	set_min_mid_max(stack_dst);
 }
 
 void	divide_stack_min(t_stack *stack_src, t_stack *stack_dst)
 {
 	unsigned int	half;
-
-	set_min_mid_max(stack_src);
+	
 	half = stack_src->size / 2 + stack_src->size % 2;
+	set_min_mid_max(stack_src);
 	if (half < 3)
 		half = 3;
 	while (stack_src->size > half)
@@ -100,4 +101,5 @@ void	divide_stack_min(t_stack *stack_src, t_stack *stack_dst)
 		}
 	}
 	set_min_mid_max(stack_src);
+	set_min_mid_max(stack_dst);
 }
