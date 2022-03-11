@@ -6,7 +6,7 @@
 /*   By: jgoldste <jgoldste@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 18:25:36 by jgoldste          #+#    #+#             */
-/*   Updated: 2022/03/11 02:54:45 by jgoldste         ###   ########.fr       */
+/*   Updated: 2022/03/11 21:23:52 by jgoldste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,32 @@ void	divide_stack_max(t_stack *stack_src, t_stack *stack_dst)
 	set_min_mid_max(stack_dst);
 }
 
+void	sort_pre_min(t_stack *stack_src, t_stack *stack_dst)
+{
+	int	mid_dst;
+
+	mid_dst = (stack_src->mid + stack_src->min) / 2;
+	if (stack_src->head->index < stack_src->mid)
+	{
+		if (stack_src->head->index > mid_dst)
+			make_push(stack_src, stack_dst);
+		else
+		{
+			make_push(stack_src, stack_dst);
+			make_rotate(stack_dst);
+		}
+	}
+	else
+	{
+		if (check_min_btm(stack_src) <= check_min_top(stack_src))
+			make_rotate(stack_src);
+		else
+			make_reverse(stack_src);
+	}
+	// ft_printf("\tMIN = %d\n\tMID = %d\n\tQUARTER = %d\n\tMAX = %d\n",
+	// 	stack_src->min, stack_src->mid, mid_dst, stack_src->max);
+}
+
 void	divide_stack_min(t_stack *stack_src, t_stack *stack_dst)
 {
 	unsigned int	half;
@@ -89,17 +115,7 @@ void	divide_stack_min(t_stack *stack_src, t_stack *stack_dst)
 	if (half < 3)
 		half = 3;
 	while (stack_src->size > half)
-	{
-		if (stack_src->head->index < stack_src->mid)
-			make_push(stack_src, stack_dst);
-		else
-		{
-			if (check_min_btm(stack_src) <= check_min_top(stack_src))
-				make_rotate(stack_src);
-			else
-				make_reverse(stack_src);
-		}
-	}
+		sort_pre_min(stack_src, stack_dst);
 	set_min_mid_max(stack_src);
 	set_min_mid_max(stack_dst);
 }
