@@ -6,7 +6,7 @@
 /*   By: jgoldste <jgoldste@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 20:49:20 by jgoldste          #+#    #+#             */
-/*   Updated: 2022/03/11 01:46:36 by jgoldste         ###   ########.fr       */
+/*   Updated: 2022/03/12 03:35:17 by jgoldste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	sort_three(t_stack *stack)
 void	sort(t_stack *stack_a, t_stack *stack_b)
 {
 	if (stack_a->size > 3)
-		divide_stack_min(stack_a, stack_b);
+		divide_stack(stack_a, stack_b);
 	if (check_sort_stack(stack_a) && stack_a->size == 3)
 		sort_three(stack_a);
 	if (stack_b->size)

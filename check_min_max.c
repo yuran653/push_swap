@@ -6,11 +6,32 @@
 /*   By: jgoldste <jgoldste@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 16:21:28 by jgoldste          #+#    #+#             */
-/*   Updated: 2022/03/11 01:28:57 by jgoldste         ###   ########.fr       */
+/*   Updated: 2022/03/12 03:28:57 by jgoldste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	check_sort_stack(t_stack *stack)
+{
+	int		i;
+	t_elem	*tmp;
+
+	i = stack->size - 1;
+	tmp = stack->head;
+	while (i--)
+	{
+		if (stack->head->index > stack->head->next->index)
+		{
+			stack->head = tmp;
+			return (1);
+		}
+		else
+			stack->head = stack->head->next;
+	}
+	stack->head = tmp;
+	return (0);
+}
 
 int	check_max_top(t_stack *stack)
 {
