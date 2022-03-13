@@ -6,7 +6,7 @@
 /*   By: jgoldste <jgoldste@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 01:19:29 by jgoldste          #+#    #+#             */
-/*   Updated: 2022/03/12 03:30:07 by jgoldste         ###   ########.fr       */
+/*   Updated: 2022/03/12 20:44:42 by jgoldste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct s_stack
 	int				min;
 	int				mid;
 	int				max;
+	int				total;
 	char			name;
 }	t_stack;
 
@@ -67,6 +68,7 @@ int		ft_printf(const char *str, ...);
 void	sort(t_stack *stack_a, t_stack *stack_b);
 void	set_min_mid_max(t_stack *stack);
 void	divide_stack(t_stack *stack_src, t_stack *stack_dst);
+void	sort_pre_min(t_stack *stack_src, t_stack *stack_dst);
 void	quarter_stack(t_stack *stack_src, t_stack *stack_dst);
 void	sort_three(t_stack *stack);
 void	sort_upto_five(t_stack *stack_a, t_stack *stack_b);
