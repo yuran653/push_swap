@@ -6,7 +6,7 @@
 /*   By: jgoldste <jgoldste@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 16:21:28 by jgoldste          #+#    #+#             */
-/*   Updated: 2022/03/13 01:06:15 by jgoldste         ###   ########.fr       */
+/*   Updated: 2022/03/17 08:30:53 by jgoldste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int	check_max_btm(t_stack *stack)
 	return (btm);
 }
 
-int	check_min_top(t_stack *stack)
+int	check_min_top(t_stack *stack, int value)
 {
 	t_elem	*fix;
 	int		top;
@@ -82,7 +82,7 @@ int	check_min_top(t_stack *stack)
 	i = stack->size / 2 + stack->size % 2;
 	while(i--)
 	{
-		if(stack->head->next->index < stack->mid)
+		if(stack->head->next->index < value)
 			top++;
 		stack->head = stack->head->next;
 	}
@@ -90,7 +90,7 @@ int	check_min_top(t_stack *stack)
 	return (top);
 }
 
-int	check_min_btm(t_stack *stack)
+int	check_min_btm(t_stack *stack, int value)
 {
 	t_elem	*fix;
 	int		btm;
@@ -101,7 +101,7 @@ int	check_min_btm(t_stack *stack)
 	i = stack->size / 2;
 	while(i--)
 	{
-		if (stack->head->prev->index < stack->mid)
+		if (stack->head->prev->index < value)
 			btm++;
 		stack->head =stack->head->prev;
 	}

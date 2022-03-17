@@ -6,7 +6,7 @@
 /*   By: jgoldste <jgoldste@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 01:19:29 by jgoldste          #+#    #+#             */
-/*   Updated: 2022/03/12 20:44:42 by jgoldste         ###   ########.fr       */
+/*   Updated: 2022/03/17 08:26:35 by jgoldste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,8 @@ int		find_top(t_stack *stack_a, t_stack *stack_b, int value);
 int		find_btm(t_stack *stack_a, t_stack *stack_b, int value);
 void	insert_two_top(t_stack *stack_a, t_stack *stack_b, int value);
 void	insert_two_btm(t_stack *stack_a, t_stack *stack_b, int value);
-int		check_min_btm(t_stack *stack);
-int		check_min_top(t_stack *stack);
+int		check_min_btm(t_stack *stack, int value);
+int		check_min_top(t_stack *stack, int value);
 int		check_max_btm(t_stack *stack);
 int		check_max_top(t_stack *stack);
 

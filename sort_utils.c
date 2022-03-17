@@ -6,7 +6,7 @@
 /*   By: jgoldste <jgoldste@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 18:25:36 by jgoldste          #+#    #+#             */
-/*   Updated: 2022/03/12 04:28:12 by jgoldste         ###   ########.fr       */
+/*   Updated: 2022/03/17 08:31:39 by jgoldste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,8 @@ void	sort_pre_min(t_stack *stack_src, t_stack *stack_dst)
 	}
 	else
 	{
-		if (check_min_btm(stack_src) <= check_min_top(stack_src))
+		if (check_min_btm(stack_src, stack_src->mid)
+			<= check_min_top(stack_src, stack_src->mid))
 			make_rotate(stack_src);
 		else
 			make_reverse(stack_src);
@@ -72,5 +73,4 @@ void	divide_stack(t_stack *stack_src, t_stack *stack_dst)
 	while (stack_src->size > half)
 		sort_pre_min(stack_src, stack_dst);
 	set_min_mid_max(stack_src);
-	set_min_mid_max(stack_dst);
 }
