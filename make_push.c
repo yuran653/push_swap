@@ -6,7 +6,7 @@
 /*   By: jgoldste <jgoldste@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/19 03:20:44 by jgoldste          #+#    #+#             */
-/*   Updated: 2022/03/03 16:29:56 by jgoldste         ###   ########.fr       */
+/*   Updated: 2022/03/18 08:29:04 by jgoldste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static void	add_multi_elem_stack(t_stack *stack_dst, t_elem *elem)
 	stack_dst->head = elem;
 }
 
-void	add_stack(t_stack *stack_dst, t_elem *elem)
+static void	add_stack(t_stack *stack_dst, t_elem *elem)
 {
 	if (stack_dst->head)
 	{

@@ -6,13 +6,13 @@
 /*   By: jgoldste <jgoldste@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 23:01:55 by jgoldste          #+#    #+#             */
-/*   Updated: 2022/03/18 00:02:27 by jgoldste         ###   ########.fr       */
+/*   Updated: 2022/03/18 08:35:43 by jgoldste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	insert_two_top(t_stack *stack_a, t_stack *stack_b, int value)
+static void	insert_two_top(t_stack *stack_a, t_stack *stack_b, int value)
 {
 	int	h;
 	int	n;
@@ -59,7 +59,7 @@ int	find_top(t_stack *stack_a, t_stack *stack_b, int value)
 	return (0);
 }
 
-void	insert_two_btm(t_stack *stack_a, t_stack *stack_b, int value)
+static void	insert_two_btm(t_stack *stack_a, t_stack *stack_b, int value)
 {
 	int	h;
 	int	n;
@@ -110,9 +110,7 @@ void	sort_insert(t_stack *stack_a, t_stack *stack_b)
 {
 	while (stack_b->size)
 	{
-		if (stack_b->size < 3)
-			sort_upto_five(stack_a, stack_b);
-		else if (stack_b->head->index == stack_a->head->index - 1)
+		if (stack_b->head->index == stack_a->head->index - 1)
 			make_push(stack_b, stack_a);
 		else if (find_top(stack_a, stack_b, stack_a->head->index - 1))
 		{

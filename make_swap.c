@@ -6,7 +6,7 @@
 /*   By: jgoldste <jgoldste@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/19 03:17:22 by jgoldste          #+#    #+#             */
-/*   Updated: 2022/02/25 06:55:13 by jgoldste         ###   ########.fr       */
+/*   Updated: 2022/03/18 08:39:58 by jgoldste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	make_swap(t_stack *stack)
 		stack->head->prev->next = tmp2;
 		tmp1->prev = tmp2;
 		stack->head = tmp2;
-		if ( stack->name == 'a' || stack->name == 'b')
+		if (stack->name == 'a' || stack->name == 'b')
 			ft_printf("s%c\n", stack->name);
 	}
 }

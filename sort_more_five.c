@@ -6,13 +6,13 @@
 /*   By: jgoldste <jgoldste@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 22:11:13 by jgoldste          #+#    #+#             */
-/*   Updated: 2022/03/18 00:01:12 by jgoldste         ###   ########.fr       */
+/*   Updated: 2022/03/18 08:32:09 by jgoldste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	quarter_stack_back(t_stack *stack_a, t_stack *stack_b)
+static void	quarter_stack_back(t_stack *stack_a, t_stack *stack_b)
 {
 	while (stack_a->head->index
 		< stack_a->total / 8 + stack_a->total % 8 + stack_a->min)
@@ -34,7 +34,7 @@ void	quarter_stack_back(t_stack *stack_a, t_stack *stack_b)
 	set_min_mid_max(stack_a);
 }
 
-void	quarter_push(t_stack *stack_b, t_stack *stack_a, int value)
+static void	quarter_push(t_stack *stack_b, t_stack *stack_a, int value)
 {
 	if (stack_b->head->index < value)
 		make_push(stack_b, stack_a);
@@ -70,6 +70,7 @@ void	quarter_stack_a(t_stack *stack_a, t_stack *stack_b)
 	int	value_b;
 	int	size_a;
 
+	set_min_mid_max(stack_a);
 	value_a = stack_a->min + stack_a->size / 4;
 	value_b = stack_a->min + stack_a->size / 4 / 2;
 	size_a = stack_a->size - stack_a->size / 4;

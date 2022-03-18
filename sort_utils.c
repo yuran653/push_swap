@@ -6,7 +6,7 @@
 /*   By: jgoldste <jgoldste@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 18:25:36 by jgoldste          #+#    #+#             */
-/*   Updated: 2022/03/17 08:31:39 by jgoldste         ###   ########.fr       */
+/*   Updated: 2022/03/18 08:41:10 by jgoldste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ void	set_min_mid_max(t_stack *stack)
 	stack->max = stack->head->index;
 	while (stop--)
 	{
-		if (stack->head->next->index > stack->head->index 
+		if (stack->head->next->index > stack->head->index
 			&& stack->head->next->index > stack->max)
 			stack->max = stack->head->next->index;
-		if (stack->head->next->index < stack->head->index 
+		if (stack->head->next->index < stack->head->index
 			&& stack->head->next->index < stack->min)
 			stack->min = stack->head->next->index;
 			stack->head = stack->head->next;
@@ -37,7 +37,7 @@ void	set_min_mid_max(t_stack *stack)
 	stack->head = fix;
 }
 
-void	sort_pre_min(t_stack *stack_src, t_stack *stack_dst)
+static void	sort_pre_min(t_stack *stack_src, t_stack *stack_dst)
 {
 	int	mid_dst;
 
@@ -65,7 +65,7 @@ void	sort_pre_min(t_stack *stack_src, t_stack *stack_dst)
 void	divide_stack(t_stack *stack_src, t_stack *stack_dst)
 {
 	unsigned int	half;
-	
+
 	half = stack_src->size / 2 + stack_src->size % 2;
 	set_min_mid_max(stack_src);
 	if (half < 3)

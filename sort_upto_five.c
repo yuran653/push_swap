@@ -6,7 +6,7 @@
 /*   By: jgoldste <jgoldste@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/28 20:49:20 by jgoldste          #+#    #+#             */
-/*   Updated: 2022/03/12 20:50:38 by jgoldste         ###   ########.fr       */
+/*   Updated: 2022/03/18 08:40:35 by jgoldste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	sort_three(t_stack *stack)
 		make_swap(stack);
 	if (stack->head->index > stack->head->next->index
 		&& stack->head->index > stack->head->prev->index)
-			make_rotate(stack);
+		make_rotate(stack);
 	if (stack->head->next->index > stack->head->prev->index)
 		make_reverse(stack);
 }

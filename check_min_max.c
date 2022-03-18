@@ -6,7 +6,7 @@
 /*   By: jgoldste <jgoldste@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 16:21:28 by jgoldste          #+#    #+#             */
-/*   Updated: 2022/03/17 08:30:53 by jgoldste         ###   ########.fr       */
+/*   Updated: 2022/03/18 08:39:19 by jgoldste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,9 @@ int	check_max_top(t_stack *stack)
 	fix = stack->head;
 	top = 0;
 	i = stack->size / 2 + stack->size % 2;
-	while(i--)
+	while (i--)
 	{
-		if(stack->head->next->index > stack->mid)
+		if (stack->head->next->index > stack->mid)
 			top++;
 		stack->head = stack->head->next;
 	}
@@ -61,11 +61,11 @@ int	check_max_btm(t_stack *stack)
 	fix = stack->head;
 	btm = 0;
 	i = stack->size / 2;
-	while(i--)
+	while (i--)
 	{
 		if (stack->head->prev->index > stack->mid)
 			btm++;
-		stack->head =stack->head->prev;
+		stack->head = stack->head->prev;
 	}
 	stack->head = fix;
 	return (btm);
@@ -80,9 +80,9 @@ int	check_min_top(t_stack *stack, int value)
 	fix = stack->head;
 	top = 0;
 	i = stack->size / 2 + stack->size % 2;
-	while(i--)
+	while (i--)
 	{
-		if(stack->head->next->index < value)
+		if (stack->head->next->index < value)
 			top++;
 		stack->head = stack->head->next;
 	}
@@ -99,11 +99,11 @@ int	check_min_btm(t_stack *stack, int value)
 	fix = stack->head;
 	btm = 0;
 	i = stack->size / 2;
-	while(i--)
+	while (i--)
 	{
 		if (stack->head->prev->index < value)
 			btm++;
-		stack->head =stack->head->prev;
+		stack->head = stack->head->prev;
 	}
 	stack->head = fix;
 	return (btm);
