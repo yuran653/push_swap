@@ -6,7 +6,7 @@
 /*   By: jgoldste <jgoldste@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 22:11:13 by jgoldste          #+#    #+#             */
-/*   Updated: 2022/03/18 08:32:09 by jgoldste         ###   ########.fr       */
+/*   Updated: 2022/03/23 00:13:29 by jgoldste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,24 +82,33 @@ void	quarter_stack_a(t_stack *stack_a, t_stack *stack_b)
 			if (stack_b->head->index < value_b)
 				make_rotate(stack_b);
 		}
-		if (check_min_btm(stack_a, value_a) <= check_min_top(stack_a, value_a))
 			make_rotate(stack_a);
-		else
-			make_reverse(stack_a);
 	}
 }
 
 void	sort_more_five(t_stack *stack_a, t_stack *stack_b)
 {
+	int	one_sixteen;
+
+	one_sixteen = stack_a->total / 16;
+	if (one_sixteen < 3)
+		one_sixteen = 3;
 	if (stack_b->size > 100)
 	{
 		quarter_stack_b(stack_b, stack_a);
-		quarter_stack_a(stack_a, stack_b);
+		// quarter_stack_a(stack_a, stack_b);
 	}
 	if (check_sort_stack(stack_a))
 	{
-		while (stack_a->size > 3)
+		while ((int)stack_a->size > one_sixteen)
 			divide_stack(stack_a, stack_b);
+		while (stack_a->size > 3)
+		{
+			if (stack_a->head->index <= stack_a->max - 3)
+				make_push(stack_a, stack_b);
+			else
+				make_rotate(stack_a);
+		}
 		if (check_sort_stack(stack_a))
 			sort_three(stack_a);
 	}

@@ -6,7 +6,7 @@
 /*   By: jgoldste <jgoldste@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 01:19:29 by jgoldste          #+#    #+#             */
-/*   Updated: 2022/03/18 08:36:02 by jgoldste         ###   ########.fr       */
+/*   Updated: 2022/03/22 14:34:36 by jgoldste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@ typedef struct s_elem
 {
 	int				number;
 	int				index;
+	int				order;
+	int				min_of_max;
+	int				moves;
 	struct s_elem	*next;
 	struct s_elem	*prev;
 }	t_elem;
@@ -31,6 +34,7 @@ typedef struct s_stack
 	int				min;
 	int				mid;
 	int				max;
+	int				min_moves;
 	int				total;
 	char			name;
 }	t_stack;
