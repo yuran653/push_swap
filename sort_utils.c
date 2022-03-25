@@ -6,7 +6,7 @@
 /*   By: jgoldste <jgoldste@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 18:25:36 by jgoldste          #+#    #+#             */
-/*   Updated: 2022/03/24 21:54:05 by jgoldste         ###   ########.fr       */
+/*   Updated: 2022/03/24 22:16:33 by jgoldste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,52 +58,34 @@ void	set_min_mid_max(t_stack *stack)
 	stack->head = fix;
 }
 
-void	divide_stack(t_stack *stack_src, t_stack *stack_dst)
+static void	sort_pre_min(t_stack *stack_src, t_stack *stack_dst)
 {
-	unsigned int	half;
 	int	mid_dst;
 
 	mid_dst = (stack_src->mid + stack_src->min) / 2;
+	if (stack_src->head->index < stack_src->mid)
+	{
+		if (stack_src->head->index > mid_dst)
+			make_push(stack_src, stack_dst);
+		else
+		{
+			make_push(stack_src, stack_dst);
+			make_rotate(stack_dst);
+		}
+	}
+	else
+			make_rotate(stack_src);
+}
+
+void	divide_stack(t_stack *stack_src, t_stack *stack_dst)
+{
+	unsigned int	half;
+
 	half = stack_src->size / 2 + stack_src->size % 2;
 	set_min_mid_max(stack_src);
 	if (half < 3)
 		half = 3;
 	while (stack_src->size > half)
-	{
-		if (stack_src->head->index < stack_src->mid)
-			make_push(stack_src, stack_dst);
-		else
-			make_rotate(stack_src);
-	}
+		sort_pre_min(stack_src, stack_dst);
 	set_min_mid_max(stack_src);
-	set_min_mid_max(stack_dst);
 }
-
-
-// void	divide_stack(t_stack *stack_src, t_stack *stack_dst)
-// {
-// 	unsigned int	half;
-// 	int				mid_dst;
-
-// 	set_min_mid_max(stack_src);
-// 	mid_dst = (stack_src->mid + stack_src->min) / 2;
-// 	half = stack_src->size / 2 + stack_src->size % 2;
-// 	if (half < 3)
-// 		half = 3;
-// 	while (stack_src->size > half)
-// 	{
-// 		if (stack_src->head->index < stack_src->mid)
-// 		{
-// 			if (stack_src->head->index > mid_dst)
-// 				make_push(stack_src, stack_dst);
-// 			else
-// 			{
-// 				make_push(stack_src, stack_dst);
-// 				make_rotate(stack_dst);
-// 			}
-// 		}
-// 		else
-// 			make_rotate(stack_src);
-// 	}
-// 	set_min_mid_max(stack_src);
-// }

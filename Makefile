@@ -6,23 +6,23 @@
 #    By: jgoldste <jgoldste@student.21-school.ru    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/02 01:09:45 by jgoldste          #+#    #+#              #
-#    Updated: 2022/03/22 23:09:41 by jgoldste         ###   ########.fr        #
+#    Updated: 2022/03/24 22:21:24 by jgoldste         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	push_swap
 
-SRCS		=	push_swap.c			parse_argv.c				get_number.c\
-				init_stack.c		free_error_func.c			ft_printf.c\
-				make_swap.c			make_rotate_reverse.c		make_push.c\
-				sort_upto_five.c	sort_more_five.c			sort_insert.c\
-				sort_utils.c
+SRCS		=	push_swap.c			parse_argv.c		get_number.c\
+				init_stack.c		free_error_func.c	ft_printf.c\
+				make_swap.c			make_push.c			make_rotate_reverse.c\
+				sort_insert.c		sort_utils.c\
+				sort_upto_five.c	sort_more_five.c	
 
-SRCS_B		=	checker.c
+SRCS_B		=	push_swap_bonus.c
 
 HEADER		=	push_swap.h
 
-HEADER_B	=	checker.h
+HEADER_B	=	push_swap_bonus.h
 
 OBJS		=	$(patsubst %.c,%.o,$(SRCS))
 
