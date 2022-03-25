@@ -6,7 +6,7 @@
 /*   By: jgoldste <jgoldste@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 18:25:36 by jgoldste          #+#    #+#             */
-/*   Updated: 2022/03/24 22:16:33 by jgoldste         ###   ########.fr       */
+/*   Updated: 2022/03/25 21:40:55 by jgoldste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ static void	sort_pre_min(t_stack *stack_src, t_stack *stack_dst)
 		}
 	}
 	else
-			make_rotate(stack_src);
+		make_rotate(stack_src);
 }
 
 void	divide_stack(t_stack *stack_src, t_stack *stack_dst)

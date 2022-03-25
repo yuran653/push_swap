@@ -6,7 +6,7 @@
 /*   By: jgoldste <jgoldste@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 00:43:47 by jgoldste          #+#    #+#             */
-/*   Updated: 2022/03/25 05:14:03 by jgoldste         ###   ########.fr       */
+/*   Updated: 2022/03/25 21:39:43 by jgoldste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,10 @@ t_stack	*init_stack(char name)
 		return (NULL);
 	stack->head = NULL;
 	stack->size = 0;
+	stack->min = 0;
+	stack->mid = 0;
+	stack->max = 0;
+	stack->total = 0;
 	stack->name = name;
 	return (stack);
 }

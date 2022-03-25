@@ -4,7 +4,7 @@ ARG=`ruby -e "puts (1..50).to_a.shuffle.join(' ')"`; ./push_swap $ARG | wc -l
 ARG=`ruby -e "puts (1..10).to_a.shuffle.join(' ')"`; ./push_swap $ARG | wc -l
 ARG=`ruby -e "puts (-2..2).to_a.shuffle.join(' ')"`; ./push_swap $ARG | wc -l
 ARG=`ruby -e "puts (-2..1).to_a.shuffle.join(' ')"`; ./push_swap $ARG | wc -l
-ARG=`ruby -e "puts (-1..1).to_a.shuffle.join(' ')"`; ./push_swap $ARG | wc -
+ARG=`ruby -e "puts (-1..1).to_a.shuffle.join(' ')"`; ./push_swap $ARG | wc -l
 
 python3 pyviz.py `ruby -e "puts (1..500).to_a.shuffle.join(' ')"`
 python3 pyviz.py `ruby -e "puts (1..100).to_a.shuffle.join(' ')"`

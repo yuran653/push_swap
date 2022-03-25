@@ -6,7 +6,7 @@
 /*   By: jgoldste <jgoldste@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 22:11:13 by jgoldste          #+#    #+#             */
-/*   Updated: 2022/03/25 06:22:15 by jgoldste         ###   ########.fr       */
+/*   Updated: 2022/03/25 21:40:47 by jgoldste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,11 @@ void	quarter_stack_b(t_stack *stack_b, t_stack *stack_a)
 
 void	sort_more_five(t_stack *stack_a, t_stack *stack_b)
 {
-	int one_sixteen;
-	
+	int	one_sixteen;
+
 	one_sixteen = stack_a->total / 16;
+	if (one_sixteen < 3)
+		one_sixteen = 3;
 	if (stack_b->size > 100)
 		quarter_stack_b(stack_b, stack_a);
 	if (check_sort_stack(stack_a))
