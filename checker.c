@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgoldste <jgoldste@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/02 01:21:16 by jgoldste          #+#    #+#             */
-/*   Updated: 2022/03/28 16:08:19 by jgoldste         ###   ########.fr       */
+/*   Created: 2022/03/26 00:10:58 by jgoldste          #+#    #+#             */
+/*   Updated: 2022/03/26 00:38:37 by jgoldste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker.h"
 
 int	main(int argc, char **argv)
 {
@@ -25,10 +25,7 @@ int	main(int argc, char **argv)
 		exit_error(EXIT_FAILURE, 1);
 	if (stack_a->size > 1)
 	{
-		if (stack_a->size == 2)
-			make_swap(stack_a);
-		else
-			sort(stack_a, stack_b);
+		ft_printf("CHECKER\n");
 	}
 	free_stack_exit(stack_a, -1, 0);
 	free_stack_exit(stack_b, -1, 0);

@@ -6,7 +6,7 @@
 #    By: jgoldste <jgoldste@student.21-school.ru    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/02 01:09:45 by jgoldste          #+#    #+#              #
-#    Updated: 2022/03/25 22:00:23 by jgoldste         ###   ########.fr        #
+#    Updated: 2022/03/28 18:48:53 by jgoldste         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,9 +18,10 @@ SRCS		=	push_swap.c			parse_argv.c		get_number.c\
 				init_stack.c		free_error_func.c	ft_printf.c\
 				make_swap.c			make_push.c			make_rotate_reverse.c\
 				sort_insert.c		sort_utils.c\
-				sort_upto_five.c	sort_more_five.c	
+				sort_upto_five.c	sort_more_five.c
 
-SRCS_B		=	checker.c
+SRCS_B		=	checker.c				$(SRCS)\
+				$(GNL)get_next_line.c	$(GNL)get_next_line_utils.c
 
 HEADER		=	push_swap.h
 
@@ -44,6 +45,8 @@ RM			=	rm -rf
 
 LIB			=	./libft/libft.a
 
+GNL			=	./get_next_line/
+
 YELLOW		=	"\033[1;33m"
 GREEN		=	"\033[1;32m"
 END			=	"\033[0m"
@@ -61,16 +64,14 @@ libft		:
 $(NAME)		:	$(OBJS) $(LIB)
 ifeq 			($(strip $(SRCS)),$(strip $(SRCS_B)))
 				$(CC) $(CFLAGS) $(INCLUDES) $(LIB) -o $(NAME) $(OBJS)
-				@echo ${GREEN} "\n\tPush_swap bonus is compiled\n" ${END}
+				@echo ${GREEN} "\n\tChecker is compiled\n" ${END}
 else
-				@$(RM) $(OBJS_B) $(D_FILES_B)
 				$(CC) $(CFLAGS) $(INCLUDES) $(LIB) -o $(NAME) $(OBJS)
 				@echo ${GREEN} "\n\tPush_swap is compiled\n" ${END}
 endif
 
 bonus		:	
-				@$(RM) $(OBJS) $(D_FILES)
-				@make SRCS='$(SRCS_B)' HEADER='$(HEADER_B)'
+				make SRCS='$(SRCS_B)' HEADER='$(HEADER_B)' NAME='$(NAME_B)'
 
 clean		:	
 				@$(RM) $(OBJS) $(OBJS_B) $(D_FILES) $(D_FILES_B)

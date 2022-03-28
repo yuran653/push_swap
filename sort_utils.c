@@ -6,7 +6,7 @@
 /*   By: jgoldste <jgoldste@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 18:25:36 by jgoldste          #+#    #+#             */
-/*   Updated: 2022/03/25 21:40:55 by jgoldste         ###   ########.fr       */
+/*   Updated: 2022/03/28 18:49:26 by jgoldste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +65,11 @@ static void	sort_pre_min(t_stack *stack_src, t_stack *stack_dst)
 	mid_dst = (stack_src->mid + stack_src->min) / 2;
 	if (stack_src->head->index < stack_src->mid)
 	{
-		if (stack_src->head->index > mid_dst)
+		if (stack_src->head->index >= mid_dst)
 			make_push(stack_src, stack_dst);
 		else
 		{
+			stack_src->head->flag = 1;
 			make_push(stack_src, stack_dst);
 			make_rotate(stack_dst);
 		}
