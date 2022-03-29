@@ -6,7 +6,7 @@
 #    By: jgoldste <jgoldste@student.21-school.ru    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/02 01:09:45 by jgoldste          #+#    #+#              #
-#    Updated: 2022/03/29 15:56:07 by jgoldste         ###   ########.fr        #
+#    Updated: 2022/03/29 17:28:02 by jgoldste         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,6 +57,8 @@ END			=	"\033[0m"
 
 all			:	libft $(NAME)
 
+bonus		:	libft $(NAME_B)
+
 libft		:	
 				$(MAKE) -C $(dir $(LIB))
 
@@ -64,16 +66,12 @@ libft		:
 				$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@ -MD
 
 $(NAME)		:	$(OBJS) $(LIB)
-ifeq 			($(strip $(SRCS)),$(strip $(SRCS_B)))
-				$(CC) $(CFLAGS) $(INCLUDES) $(LIB) -o $(NAME) $(OBJS)
-				@echo ${GREEN} "\n\tChecker is compiled\n" ${END}
-else
 				$(CC) $(CFLAGS) $(INCLUDES) $(LIB) -o $(NAME) $(OBJS)
 				@echo ${GREEN} "\n\tPush_swap is compiled\n" ${END}
-endif
 
-bonus		:	libft
-				make SRCS='$(SRCS_B)' HEADER='$(HEADER_B)' NAME='$(NAME_B)'
+$(NAME_B)	:	$(OBJS_B) $(LIB)
+				$(CC) $(CFLAGS) $(INCLUDES) $(LIB) -o $(NAME_B) $(OBJS_B)
+				@echo ${GREEN} "\n\tChecker is compiled\n" ${END}
 
 clean		:	
 				@$(RM) $(OBJS) $(OBJS_B) $(D_FILES) $(D_FILES_B)

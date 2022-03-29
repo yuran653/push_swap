@@ -6,7 +6,7 @@
 /*   By: jgoldste <jgoldste@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/26 00:10:58 by jgoldste          #+#    #+#             */
-/*   Updated: 2022/03/29 16:13:14 by jgoldste         ###   ########.fr       */
+/*   Updated: 2022/03/29 17:16:44 by jgoldste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,19 +45,22 @@ void	execute_operation(t_stack *stack_a, t_stack *stack_b, char *operation)
 		make_reverse_both(stack_a, stack_b);
 	else
 		error_operation(stack_a, stack_b, operation);
+	free(operation);
 }
 
 void	read_operation(t_stack *stack_a, t_stack *stack_b)
 {
 	char	*operation;
+	int		eof;
 
-	while (1)
+	eof = 1;
+	while (eof)
 	{
 		operation = get_next_line(STDIN_FILENO);
 		if (!operation)
-			break ;
-		execute_operation(stack_a, stack_b, operation);
-		free(operation);
+			eof = 0;
+		else
+			execute_operation(stack_a, stack_b, operation);
 	}
 }
 
@@ -74,9 +77,9 @@ int	main(int argc, char **argv)
 		exit_error(EXIT_FAILURE, 1);
 	read_operation(stack_a, stack_b);
 	if (check_sort_stack(stack_a))
-		ft_printf("Error\n");
+		ft_printf("KO\n");
 	else if (stack_b->size)
-		ft_printf("Error\n");
+		ft_printf("KO\n");
 	else
 		ft_printf("OK\n");
 	free_stack_exit(stack_a, -1, 0);
