@@ -6,7 +6,7 @@
 /*   By: jgoldste <jgoldste@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 01:19:29 by jgoldste          #+#    #+#             */
-/*   Updated: 2022/03/28 18:31:02 by jgoldste         ###   ########.fr       */
+/*   Updated: 2022/03/29 16:16:17 by jgoldste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int		find_top(t_stack *stack_a, t_stack *stack_b, int value);
 int		find_btm(t_stack *stack_a, t_stack *stack_b, int value);
 void	set_min_mid_max(t_stack *stack);
 void	divide_stack(t_stack *stack_src, t_stack *stack_dst);
-void	quarter_stack_b(t_stack *stack_b, t_stack *stack_a);
+void	quarter_stack(t_stack *stack_b, t_stack *stack_a);
 int		check_sort_stack(t_stack *stack);
 void	make_swap(t_stack *stack);
 void	make_swap_both(t_stack *stack_a, t_stack *stack_b);
@@ -73,7 +73,5 @@ void	free_array2_exit(int *array1, int *array2, int ext, int err);
 void	free_argv_exit(int argc, char **argv, int ext, int err);
 void	free_stack_exit(t_stack *stack, int ext, int err);
 int		ft_printf(const char *str, ...);
-
-void	print_stack(t_stack *stack);
 
 #endif

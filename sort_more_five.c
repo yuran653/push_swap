@@ -6,7 +6,7 @@
 /*   By: jgoldste <jgoldste@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 22:11:13 by jgoldste          #+#    #+#             */
-/*   Updated: 2022/03/28 18:31:59 by jgoldste         ###   ########.fr       */
+/*   Updated: 2022/03/29 12:53:12 by jgoldste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ static void	qrtr_stack_back_top(t_stack *stack_a, t_stack *stack_b, int max_b)
 				make_rotate(stack_b);
 		}
 	}
-	qrtr_stack_back_btm(stack_a, stack_b, max_b);
 }
 
 static void	quarter_push(t_stack *stack_b, t_stack *stack_a, int value)
@@ -58,7 +57,7 @@ static void	quarter_push(t_stack *stack_b, t_stack *stack_a, int value)
 	}
 }
 
-void	quarter_stack_b(t_stack *stack_b, t_stack *stack_a)
+void	quarter_stack(t_stack *stack_b, t_stack *stack_a)
 {
 	int	quarter;
 	int	max_b;
@@ -72,8 +71,10 @@ void	quarter_stack_b(t_stack *stack_b, t_stack *stack_a)
 	while (stack_b->size)
 		quarter_push(stack_b, stack_a, stack_b->mid);
 	qrtr_stack_back_top(stack_a, stack_b, max_b);
+	qrtr_stack_back_btm(stack_a, stack_b, max_b);
 	make_rotate(stack_a);
 	qrtr_stack_back_top(stack_a, stack_b, max_b);
+	qrtr_stack_back_btm(stack_a, stack_b, max_b);
 }
 
 void	sort_more_five(t_stack *stack_a, t_stack *stack_b)
@@ -84,7 +85,7 @@ void	sort_more_five(t_stack *stack_a, t_stack *stack_b)
 	if (one_sixteen < 3)
 		one_sixteen = 3;
 	if (stack_b->size > 128)
-		quarter_stack_b(stack_b, stack_a);
+		quarter_stack(stack_b, stack_a);
 	if (check_sort_stack(stack_a))
 	{
 		while ((int)stack_a->size > one_sixteen)

@@ -6,7 +6,7 @@
 #    By: jgoldste <jgoldste@student.21-school.ru    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/02 01:09:45 by jgoldste          #+#    #+#              #
-#    Updated: 2022/03/28 18:48:53 by jgoldste         ###   ########.fr        #
+#    Updated: 2022/03/29 15:56:07 by jgoldste         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,9 @@ SRCS		=	push_swap.c			parse_argv.c		get_number.c\
 				sort_insert.c		sort_utils.c\
 				sort_upto_five.c	sort_more_five.c
 
-SRCS_B		=	checker.c				$(SRCS)\
+SRCS_B		=	checker.c			parse_argv.c		get_number.c\
+				init_stack.c		free_error_func.c	ft_printf.c		sort_utils.c\
+				make_swap_bonus.c	make_push_bonus.c	make_rotate_reverse_bonus.c\
 				$(GNL)get_next_line.c	$(GNL)get_next_line_utils.c
 
 HEADER		=	push_swap.h
@@ -70,7 +72,7 @@ else
 				@echo ${GREEN} "\n\tPush_swap is compiled\n" ${END}
 endif
 
-bonus		:	
+bonus		:	libft
 				make SRCS='$(SRCS_B)' HEADER='$(HEADER_B)' NAME='$(NAME_B)'
 
 clean		:	
@@ -79,7 +81,7 @@ clean		:
 				@echo ${YELLOW} "\n\tPush_swap 'clean' status: DONE\n" ${END}
 				
 fclean		:	clean
-				@$(RM) $(NAME)
+				@$(RM) $(NAME) $(NAME_B)
 				@$(MAKE) -C $(dir $(LIB)) fclean
 				@echo ${YELLOW} "\n\tPush_swap 'fclean' status: DONE\n" ${END}
 
