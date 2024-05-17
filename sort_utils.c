@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgoldste <jgoldste@student.21-school.ru    +#+  +:+       +#+        */
+/*   By: jgoldste <jgoldste@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 18:25:36 by jgoldste          #+#    #+#             */
-/*   Updated: 2022/03/28 18:49:26 by jgoldste         ###   ########.fr       */
+/*   Updated: 2024/05/17 12:44:14 by jgoldste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,15 @@ void	set_min_mid_max(t_stack *stack)
 	{
 		if (stack->head->next->index > stack->head->index
 			&& stack->head->next->index > stack->max)
-			stack->max = stack->head->next->index;
+			{
+				stack->max = stack->head->next->index;
+			}
 		if (stack->head->next->index < stack->head->index
 			&& stack->head->next->index < stack->min)
-			stack->min = stack->head->next->index;
-			stack->head = stack->head->next;
+			{
+				stack->min = stack->head->next->index;
+				stack->head = stack->head->next;
+			}
 	}
 	stack->mid = (stack->max + stack->min) / 2 + (stack->max + stack->min) % 2;
 	if (stack->size == 4)
